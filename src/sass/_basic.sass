@@ -1,0 +1,71 @@
+*,
+*::before,
+*::after
+    box-sizing: border-box
+
+*
+    margin: 0
+    padding: 0
+    color: inherit
+    font: inherit
+    line-height: 1
+
+html
+    hanging-punctuation: first last
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+    text-wrap: balance
+
+div,
+p,
+li
+    text-wrap: pretty
+
+a
+    text-decoration: none
+    color: inherit
+
+button
+    cursor: pointer
+    background-color: transparent
+    border: none
+
+img, picture, video
+    display: block
+    width: 100%
+    height: auto
+    vertical-align: middle
+
+    font-style: italic
+
+    background-repeat: no-repeat
+    background-size: cover
+
+@media (prefers-reduced-motion: no-preference)
+    html
+        scroll-behavior: smooth
+        scroll-padding-top: 1rem
+
+.content-grid
+    --breakout-size: calc((var(--template-breakout-max-width) - var(--template-max-width)) / 2)
+
+    display: grid
+    grid-template-columns: [full-width-start] minmax(var(--template-padding), 1fr) [content-start] min(100% - (var(--template-padding) * 2), var(--template-max-width) - (var(--template-padding) * 2)) [content-end] minmax(0, var(--breakout-size)) [breakout-end] minmax(var(--template-padding), 1fr) [full-width-end]
+
+.content-grid > :not(.breakout, .full-width),
+.full-width > :not(.breakout, .full-width)
+    grid-column: content
+
+.content-grid > .breakout
+    grid-column: breakout
+
+.content-grid > .full-width
+    grid-column: full-width
+
+    display: grid
+    grid-template-columns: inherit

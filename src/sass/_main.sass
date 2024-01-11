@@ -1,0 +1,905 @@
+body
+    font-family: Inter
+    background-color: #fff
+    padding-bottom: 100vh
+
+main
+    position: relative
+    z-index: 1
+    background-color: #fff
+
+h1
+    font-size: 5rem
+    font-weight: bold
+
+// .link
+//     display: inline-flex
+//     overflow: hidden
+//     position: relative
+//     padding-bottom: 2px
+//     &:before
+//         content: ''
+//         position: absolute
+//         transition: transform .5s ease
+//         left: 0
+//         bottom: 0
+//         width: 100%
+//         height: 1px
+//         background: currentColor
+//         transform: translateX(-100%)
+//     &:hover:before
+//         transform: translateX(0)
+
+// .link-accent
+//     color: var(--text-accent)
+
+// .link-black
+//     color: var(--text-black)
+
+.link 
+    text-decoration: none !important
+    line-height: 1.3
+    background-image: linear-gradient(90deg, currentColor 50%, transparent 50%)
+    background-size: 200% 1px
+    background-position: right bottom 0.3rem
+    background-repeat: no-repeat
+    padding-block-end: 0.25em
+    transition: color 300ms, background-position 300ms
+    &:hover,
+    &:focus
+        background-position: left bottom 0.3rem
+
+
+
+.form
+
+.form-row
+    margin-bottom: 32px
+
+.input-title
+    font-size: 1.125rem
+    line-height: 1.3
+    margin-bottom: 12px
+    &__required
+        color: var(--text-accent)
+        font-size: 1rem
+        margin-left: 8px
+
+.input
+    display: block
+    width: 100%
+    border: 1px solid var(--bg-light-blue)
+    padding: 20px 16px 19px
+    border-radius: 24px 0px 0px 0px
+    &:focus
+        box-shadow: inset 0 0 2px var(--bg-blue)
+    &.is-error
+        box-shadow: inset 0 0 1px #E81A0C
+
+.btn
+    position: relative
+    overflow: hidden
+    background: none
+    border: 1px solid var(--bg-light-blue)
+    font-size: 1rem
+    line-height: 1.2
+    font-weight: bold
+    color: #fff
+    display: flex
+    flex-shrink: 0
+    gap: 24px
+    justify-content: space-between
+    padding: 0 24px 0 24px
+    height: 52px
+    align-items: center
+    border-radius: 24px
+    transition: all 0.3s
+    & span
+        z-index: 1
+        white-space: nowrap
+    &:hover
+        color: var(--text-blue)
+        .btn__arrow
+            background-color: var(--bg-blue)
+            svg
+                stroke: #fff
+    &::after
+        border-radius: 0
+        background-color: #fff
+        content: ''
+        position: absolute
+        z-index: 0
+        transition: all 0.3s
+        left: 0
+        top: 0
+        width: 0
+        height: 100%
+    &:hover:after
+        width: 100%
+    &__arrow
+        border-radius: 32px
+        width: 32px
+        height: 32px
+        background-color: #fff
+        display: flex
+        align-items: center
+        justify-content: center
+        transition: all 0.3s
+        svg
+            stroke: var(--text-blue)
+            width: 24px
+            height: 24px
+
+.btn-arrow
+    padding-right: 16px
+
+
+.btn-white
+    background-color: #fff
+    color: var(--black)
+    &::after
+        background-color: var(--bg-blue)
+    &:hover
+        border-color: var(--bg-blue)
+        color: #fff
+        .icon-svg,
+        .btn__arrow
+            stroke: #fff
+            color: #fff
+
+.btn-light-blue
+    background-color: var(--bg-light-blue)
+    color: var(--black)
+    &::after
+        background-color: var(--bg-blue)
+    &:hover
+        border-color: var(--bg-blue)
+        color: #fff
+        .icon-svg,
+        .btn__arrow
+            stroke: #fff
+            color: #fff
+
+.btn-blue
+    background-color: var(--bg-blue)
+    color: #fff
+    .btn__arrow
+        stroke: var(--text-blue)
+    &:hover
+        color: var(--black)
+        .btn__arrow
+            background-color: var(--bg-blue)
+            stroke: #fff
+    &::after
+        background-color: #fff
+        
+
+.btn-language
+    padding-left: 24px
+    padding-right: 24px
+    font-weight: normal
+
+.btn-header
+    width: 100px
+    height: 52px
+    background-color: #fff
+    border-radius: 24px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    &__line
+        width: 24px
+        height: 1px
+        background-color: var(--bg-blue)
+        margin: 3px 0
+        transition: .2s ease-in-out
+        position: relative
+
+.title
+    font-size: 3rem
+    font-weight: bold
+    padding-bottom: 32px
+    max-width: 30ch
+    &__border
+        width: 100%
+        border-bottom: 1px solid var(--bg, #D5DFE9)
+        margin-bottom: 60px
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+.subtitle
+    font-size: 1.125rem
+    font-weight: bold
+    margin-bottom: 24px
+    &__icon
+        color: var(--text-blue)
+        width: 24px
+        height: 24px
+        vertical-align: sub
+        margin-right: 12px
+
+.border-radius
+    border-radius: 24px 0 0 0
+
+.header
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    z-index: 2
+    color: #fff
+    padding-top: 40px
+    transition: background 0.1s 
+    &__main
+        display: flex
+        justify-content: space-between
+    &__main-right,
+    &__main-left
+        display: flex
+        align-items: center
+        flex-shrink: 0
+        gap: 16px
+        width: 400px
+    &__main-right
+        justify-content: flex-end
+    &__contacts
+        border-left: 1px solid rgba(255, 255, 255, 0.25)
+        padding: 5px 16px
+        display: flex
+        flex-direction: column
+        &-link
+            line-height: 1.2
+
+    &__logo
+        display: flex
+        justify-content: flex-start
+        align-items: center
+        width: 128px
+        padding-right: 16px
+        &-picture
+            background: url('./../images/logo-white.svg') no-repeat center center/contain
+            width: 100%
+            height: 48px
+
+    &__expanded
+        display: none
+        padding-top: 100px
+
+    &__expanded-nav
+        display: flex
+        justify-content: space-between
+        gap: 140px
+
+    &__nav-address
+        background-color: var(--bg-light-blue)
+        padding: 24px
+        &-title
+            font-size: 0.875rem
+            color: var(--text-grey)
+            margin-bottom: 12px
+            line-height: 1.3
+        p
+            font-size: 1.125rem
+            margin-bottom: 48px
+            line-height: 1.3
+            &:last-child
+                margin-bottom: 0
+
+    &__nav-column
+        display: flex
+        flex-direction: column
+        gap: 12px
+        min-width: 318px
+        &:last-child
+            grid-column: 1/3
+    &__nav-title
+        font-size: 0.875rem
+        color: var(--text-grey)
+        padding-bottom: 16px
+        margin-bottom: 4px
+        border-bottom: 1px solid var(--bg-light-blue)
+    &__nav-link
+        font-size: 2rem
+        font-weight: bold
+        line-height: 1.3
+        align-self: flex-start
+        background-size: 200% 2px
+    &__copyright-wrapper
+        font-size: 0.875rem
+        line-height: 1.3
+        color: var(--text-grey)
+        padding-top: 24px
+        margin-top: 80px
+        border-top: 1px solid var(--bg-light-blue)
+
+    &.is-fixed
+        position: fixed
+        background-color: #fff
+        color: var(--text-black)
+        z-index: 3
+        padding-bottom: 24px
+        .header__expanded
+            display: block
+        .header__logo-picture
+            background-image: url('./../images/logo-blue.svg')
+
+        .btn-header
+            background-color: var(--bg-blue)
+            &__line
+                background-color: #fff
+                &:first-child
+                    transform: rotate(45deg)
+                    margin-top: 3px
+                &:last-child
+                    transform: rotate(-45deg)
+                    margin-top: -3px
+
+        .btn
+            background: #fff
+            border: 1px solid var(--bg-light-blue)
+            color: var(--text-black)
+            &__arrow
+                background-color: var(--bg-blue)
+                svg
+                    stroke: #fff
+            &:hover:after
+                background-color: var(--bg-blue)
+            &:hover
+                color: #fff
+                border-color: var(--bg-light-blue)
+
+                .btn__arrow
+                    background-color: #fff
+                    svg
+                        stroke: var(--text-blue)
+
+.orbit
+    position: absolute
+    width: 1000px
+    height: 1000px
+    border-radius: 50%
+    border: 1px solid rgba(255, 255, 255, 0.25)
+.planet
+    position: absolute
+    width: 8px
+    height: 8px
+    border-radius: 50%
+    background-color: #fff
+    top: calc(50% - 4px)
+    left: calc(50% - 4px)
+    animation: planet 10s linear infinite
+
+
+@keyframes planet
+    0%
+        transform: rotate(0deg) translateX(-500px) rotate(0deg)
+
+    100%
+        transform: rotate(360deg) translateX(-500px) rotate(-360deg)
+
+.section
+    padding-top: 140px
+    padding-bottom: 140px
+    &__wrapper
+        display: flex
+        flex-direction: column
+        align-items: start
+
+.section-main
+    height: 100vh
+    height: 100svh
+    background: url(./../images/main.jpg) center center/cover
+    color: #fff
+    overflow: hidden
+    position: relative
+    padding-top: 92px
+    padding-bottom: var(--template-padding)
+
+    .orbit-left
+        left: -300px
+        bottom: -400px
+    .orbit-right
+        right: -320px
+        top: -350px
+
+    .section__wrapper
+        z-index: 1
+        position: relative
+
+    &::before
+        display: block
+        content: ""
+        background: rgba(0, 0, 0, 0.2)
+        width: 100%
+        height: 100%
+        left: 0
+        right: 0
+        position: absolute
+    &::after
+        display: block
+        content: ""
+        background: linear-gradient(0deg, rgba(29, 35, 44, 0.00) 0%, #1D232C 100%)
+        opacity: 0.5
+        width: 100%
+        height: 200px
+        left: 0
+        right: 0
+        position: absolute
+
+    &__title-container
+        flex-grow: 1
+        display: flex
+        flex-direction: column
+        gap: 24px
+        justify-content: center
+
+    &__list
+        font-size: 1.3125rem
+        &-item
+            line-height: 1.3
+            margin-bottom: 12px
+            &-arrow
+                width: 24px
+                height: 24px
+                stroke: #fff
+                vertical-align: sub
+                margin-right: 12px
+                display: inline-block
+
+.stats-cards
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: 1px
+    &__card
+        max-width: 500px
+        background-color: var(--bg-blue)
+        padding: 24px
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        &:first-child
+            border-top-left-radius: 24px
+        &:last-child
+            border-top-right-radius: 24px
+    &__header
+        font-size: 4.25rem
+        font-weight: bold
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15)
+        padding-bottom: 16px
+        margin-bottom: 16px
+    &__body
+        line-height: 1.3
+
+.section-projects
+    .project
+        flex: 0 0 318px
+
+.projects
+    display: flex
+    gap: 24px
+    overflow: hidden
+
+.slider-buttons
+    display: flex
+    gap: 12px
+    &__prev
+        &::after
+            left: unset
+            right: 0
+        svg
+            transform: rotate(180deg)
+    & > *
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 48px
+        height: 48px
+        border-radius: 50%
+        border: none
+        // background-color: var(--bg-light-blue)
+        svg
+            width: 24px
+            height: 24px
+            stroke: var(--text-blue)
+
+.projects-slider
+    width: 100%
+
+.project
+    position: relative
+    &__image-wrapper
+        margin-bottom: 24px
+        position: relative
+    &__image
+        width: 100%
+    &__goto-btn
+        position: absolute
+        right: 24px
+        bottom: 24px
+        border-radius: 24px
+        display: flex
+        align-items: center
+        height: 52px
+        padding: 0px 24px
+        background: #fff
+        border: none
+        .icon-svg
+            width: 24px
+            height: 24px
+            stroke: var(--text-blue)
+    &__title
+        font-size: 1.3125rem
+        font-weight: bold
+        line-height: 1.3
+        margin-bottom: 18px
+        .link
+            background-size: 200% 2px
+    &__link
+        display: inline-block
+        &:hover
+            .btn
+                border-color: var(--bg-blue)
+            .btn::after
+                width: 100%
+            .icon-svg
+                stroke: #fff
+
+.tags
+    display: flex
+    flex-wrap: wrap
+    gap: 8px
+.tag
+    border-radius: 24px
+    border: 1px solid var(--bg-light-blue)
+    display: flex
+    padding: 4px 12px
+    align-items: center
+    gap: 4px
+    font-size: 0.875rem
+    line-height: 1.3
+    &__icon
+        width: 24px
+        height: 24px
+        stroke: var(--text-blue)
+
+.section-map
+    background-color: var(--bg-light-blue)
+    &__title-link
+        color: #36568D
+        border-bottom: 1px solid rgba(37, 67, 117, 0.25)
+    .title__border
+        border-color: #BFC9D2
+
+.map
+    max-height: 779px
+    position: relative
+    &__image
+        width: 100%
+        max-width: 1342px
+        aspect-ratio: 1342/779
+    &__marker
+        --color: #D08935
+        position: absolute
+        width: 162px
+        height: 162px
+        background-color: var(--color)
+        color: #fff
+        font-size: 1.125rem
+        font-weight: bold
+        line-height: 1.3
+        border-radius: 50%
+        display: flex
+        align-items: center
+        justify-content: center
+        transition: all 0.2s
+        &::before,
+        &::after
+            display: block
+            content: ""
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            border: 1px solid var(--color)
+            border-radius: 50%
+            transition: all 0.2s
+        &::before
+            opacity: 0.75
+            width: 192px
+            height: 192px
+        &::after
+            opacity: 0.25
+            width: 238px
+            height: 238px
+        &:hover
+            --color: #fff
+            color: #D08935
+        &--eu
+            top: 22%
+            left: 49%
+        &--ch
+            top: 19%
+            right: 15%
+        &--as
+            top: 39%
+            right: 21%
+        &--af
+            bottom: 29%
+            left: 48%
+
+.services
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: 48px
+    background-color: var(--bg-light-blue)
+    &__image-wrapper
+        // max-width: 660px
+    &__list
+        padding: 48px 48px 48px 27px
+        display: flex
+        flex-direction: column
+        gap: 16px
+        position: relative
+        &-controls
+            position: absolute
+            top: 48px
+            bottom: 48px
+            left: -2px
+            width: 2px
+            // height: 100%
+            background-color: #fff
+        &-item
+            position: relative
+            display: flex
+            gap: 24px
+            background-color: rgba(255, 255, 255, 0.50)
+            padding: 24px
+            font-size: 1.125rem
+            line-height: 1.3
+            color: var(--text-grey)
+            &:hover
+                cursor: pointer
+                background-color: #fff
+            &::before
+                content: ""
+                display: block
+                position: absolute
+                top: 0
+                left: -32px
+                width: 8px
+                height: 8px
+                border-radius: 100%
+                background-color: #fff
+                box-shadow: 0 0 0 4px var(--bg-light-blue)
+            &-icon
+                width: 40px
+                height: 40px
+                background-position: center center
+                &-1
+                    background-image: url(./../images/services-icon-1.svg)
+                &-2
+                    background-image: url(./../images/services-icon-2.svg)
+                &-3
+                    background-image: url(./../images/services-icon-3.svg)
+                &-4
+                    background-image: url(./../images/services-icon-4.svg)
+                &-5
+                    background-image: url(./../images/services-icon-5.svg)
+
+.services__list-item.is-active
+    background-color: #fff
+    .services__list-item-icon
+        &-1
+            background-image: url(./../images/services-icon-1-active.svg)
+        &-2
+            background-image: url(./../images/services-icon-2-active.svg)
+        &-3
+            background-image: url(./../images/services-icon-3-active.svg)
+        &-4
+            background-image: url(./../images/services-icon-4-active.svg)
+        &-5
+            background-image: url(./../images/services-icon-5-active.svg)
+    &::before
+        background-color: var(--bg-blue)
+    &::after
+        content: ""
+        display: block
+        position: absolute
+        top: 0
+        left: -29px
+        width: 2px
+        height: calc(100% + 24px)
+        border-radius: 0 0 8px 8px
+        background-color: var(--bg-blue)
+
+.section-advantages
+    background-color: var(--bg-blue)
+    .section__wrapper
+        position: relative
+    &__title-box
+        border: 1px solid rgba(255, 255, 255, 0.15)
+        padding: 24px
+        color: #fff
+        position: absolute
+        width: calc(50% - 12px)
+        height: calc(33% - 12px)
+        left: 0
+        .title
+            max-width: none
+            font-size: 2.5rem
+        .subtitle
+            &__icon
+                color: #fff
+
+.advantages
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: 24px
+    position: relative
+
+.advantage
+    padding: 24px
+    background-color: #fff
+    display: flex
+    &__left
+        position: relative
+        flex: 1 0 250px
+        height: 250px
+        display: flex
+        align-items: center
+        justify-content: center
+        border-right: 1px solid var(--bg-light-blue)
+    &__right
+        padding-left: 24px
+    &__num
+        position: absolute
+        top: 0
+        left: 0
+        width: 32px
+        height: 32px
+        border-radius: 100%
+        border: 1px solid var(--text-blue)
+        text-align: center
+        line-height: 30px
+    &__icon
+        width: 100px
+        height: 100px
+    &__title
+        font-size: 1.5rem
+        font-weight: bold
+        line-height: 1.3
+        margin-bottom: 12px
+    &__description
+        line-height: 1.3
+
+.section-clients
+    background-color: var(--bg-light-blue)
+    .title__border
+        border-color: #BFC9D2
+        align-items: flex-end
+        padding-bottom: 32px
+    .subtitle
+        margin-bottom: 0
+
+.clients
+    display: flex
+    gap: 24px
+    &__item
+        background-color: #fff
+        align-items: center
+        justify-content: center
+
+.footer
+    padding: 80px 0 var(--template-padding)
+    background: var(--bg-black)
+    color: #fff
+    z-index: 0
+    position: fixed
+    // top: 0
+    left: 0
+    right: 0
+    bottom: 0
+
+    .title__border
+        border-color: rgba(255, 255, 255, 0.25)
+        .btn
+            border-color: rgba(255, 255, 255, 0.25)
+
+    .title
+        padding-bottom: 60px
+
+    &__body
+        padding: 24px
+        color: var(--text-black)
+        background-color: #fff
+    &__copyright-wrapper
+        display: flex
+        justify-content: space-between
+        border-top: 1px solid var(--bg-light-blue)
+        padding-top: 24px
+        margin-top: 80px
+        color: var(--text-grey)
+        font-size: 0.875rem
+        line-height: 1.3
+        button
+            appearance: none
+    &__logo
+        width: 128px
+        height: 48px
+    &__body-content
+        display: flex
+        justify-content: space-between
+    &__nav-box
+        max-width: 864px
+        display: grid
+        grid-template-columns: 1fr 1fr
+        row-gap: 40px
+        column-gap: 138px
+    &__nav-column
+        display: flex
+        flex-direction: column
+        gap: 12px
+        &:last-child
+            grid-column: 1/3
+    &__nav-title
+        font-size: 0.875rem
+        color: var(--text-grey)
+        padding-bottom: 16px
+        margin-bottom: 4px
+        border-bottom: 1px solid var(--bg-light-blue)
+    &__nav-link
+        line-height: 1.3
+        align-self: flex-start
+
+
+.backdrop
+    position: fixed
+    content: ""
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: rgba(29, 35, 44, 0.25)
+    backdrop-filter: blur(30px)
+    z-index: 2
+    display: none
+    transition: opacity 0.1s
+    opacity: 0
+    &.is-active
+        opacity: 1
+
+.popup
+    display: none
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: rgba(29, 35, 44, 0.25)
+    backdrop-filter: blur(30px)
+    z-index: 4
+    opacity: 0
+    transition: opacity 0.3s
+    // display: flex
+    justify-content: flex-end
+    &.is-shown
+        opacity: 1
+    &-window
+        position: relative
+        width: 50%
+        background-color: #fff
+        padding: var(--template-padding)
+    &__close
+        position: absolute
+        left: -24px
+        top: 48px
+        transform: translateX(-100%)
+        z-index: 4
+        .btn
+            padding: 14px 38px
+            border: none
+        .icon-svg
+            width: 24px
+            height: 24px
