@@ -4,11 +4,22 @@
         --template-padding: 24px
         --template-max-width: 1279px
 
+    body
+        font-size: 0.875rem
+
     h1
         font-size: 4.25rem
 
+    // .orbit
+    //     &-left
+    //         left: -620px
+    //         bottom: -650px
+    //     &-right
+    //         right: -810px
+    //         top: -400px
+
     .header
-        padding-top: 24px
+        padding-top: var(--template-padding)
         &__main-left,
         &__main-right
             width: 150px
@@ -42,6 +53,20 @@
         padding-bottom: 100px
 
     .section-main
+        .orbit-left
+            left: -600px
+            bottom: -160px
+        .orbit-right
+            right: -720px
+            top: -440px
+
+    .section-main--inner
+        padding-bottom: var(--template-padding) !important
+        .orbit-left
+            left: -590px
+            bottom: -710px
+        .orbit-right
+            top: -330px
 
     .map
         &__marker
@@ -86,6 +111,9 @@
         .section__wrapper
             overflow: hidden
 
+    .projects
+        grid-template-columns: [line-start] 1fr 1fr [line-end]
+
     .advantages
         display: flex
         overflow: hidden
@@ -119,3 +147,233 @@
     .popup-window
         width: 100%
         height: calc(100vh - 84px)
+
+    .section-contacts
+        &__wrapper
+            grid-template-columns: 100%
+            gap: 68px
+        &__map
+            aspect-ratio: 1/1
+            height: unset
+        &__phone
+            padding-bottom: 32px
+
+
+@media (max-width: 767px)
+
+    :root 
+        --template-padding: 16px
+        --template-max-width: 767px
+
+    body
+        padding-bottom: 0 !important
+
+    .section
+        padding-top: 68px
+        padding-bottom: 68px
+
+    .title
+        font-size: 1.625rem
+        line-height: 1.1
+        padding-bottom: 24px
+        text-wrap: balance
+        &__border
+            margin-bottom: 32px
+
+    .subtitle
+        margin-bottom: 16px
+
+    h1
+        font-size: 2.25rem
+        margin-bottom: 16px
+
+    .form-row
+        margin-bottom: 24px
+    
+    .input-title
+        font-size: 1rem
+
+    .header
+        overflow-y: auto
+        &__main-left
+            width: auto  
+        &__main-right  
+            display: none
+        &__expanded
+            padding-top: 32px
+            &-nav
+                display: flex
+                flex-direction: column
+                gap: 32px
+        &__nav-link
+            font-size: 1.5rem
+        &__nav-address
+            .btn
+                display: flex
+                width: 100%
+                margin-top: 24px
+            p
+                margin-bottom: 24px
+                font-size: 1rem
+        &__copyright-wrapper
+            padding-bottom: var(--template-padding)
+
+    .section-main--inner
+        height: 350px
+
+    .stats-cards
+        grid-template-columns: 100%
+        grid-template-rows: auto auto
+        &__card
+            padding: 16px
+        &__card:last-child
+            border-top-right-radius: 0
+        &__header
+            font-size: 3rem
+            margin-bottom: 8px
+
+    .orbit
+        display: none
+
+    .section-main
+        &__list-item
+            font-size: 1rem
+            display: flex
+        &__list-item-arrow
+            flex: 0 0 24px
+
+    .slider-buttons
+        display: none
+
+    .projects
+        row-gap: 48px
+        grid-template-columns: [line-start] 100% [line-end]
+
+    .project
+        &__image-wrapper
+            margin-bottom: 16px
+        &__title
+            font-size: 1.125rem
+            margin-bottom: 16px
+        &__line
+            display: none !important
+    
+    .section-projects
+        .project
+            flex: 0 0 271px
+
+    .tag
+        font-size: 0.75rem
+
+    .map
+        &__marker
+            font-size: 0.75rem
+            width: 54px
+            height: 54px
+            &::before
+                width: 64px
+                height: 64px
+            &::after
+                width: 80px
+                height: 80px
+
+    .services
+        &__list
+            padding: 24px 16px
+            flex-direction: row
+            overflow: hidden
+            &-controls
+                display: none
+            &-item
+                padding: 16px
+                flex-direction: column
+                gap: 16px
+                flex: 0 0 250px
+                font-size: 0.875rem
+            &-item,
+            &-item.is-active
+                &::before,
+                &::after
+                    display: none
+
+    .section-advantages
+        &__title-box
+            padding: 16px
+            .title
+                font-size: 1.3125rem
+
+    .advantages
+
+    .advantage
+        padding: 16px
+        flex-direction: column
+        flex: 0 0 270px
+        &__left
+            border-right: none
+            border-bottom: 1px solid var(--bg-light-blue)
+            flex: none
+            height: auto
+            padding-top: 40px
+            padding-bottom: 40px
+            margin-bottom: 16px
+        &__right
+            padding-left: 0
+        &__title
+            font-size: 1.125rem
+            margin-bottom: 8px
+
+    .section-clients
+        .title__border
+            padding-bottom: 24px
+
+    .clients
+        gap: 14px
+
+    .footer
+        position: relative
+        padding-top: 48px
+        .title
+            font-size: 1.5rem
+            padding-bottom: 24px
+            &__border
+                flex-direction: column
+                align-items: flex-start
+                padding-bottom: 32px
+        &__body
+            padding: 16px
+        &__nav-box
+            column-gap: 14px
+            row-gap: 24px
+
+        &__copyright-wrapper
+            flex-direction: column
+            align-items: flex-start
+            gap: 8px  
+            margin-top: 24px
+            padding-top: 16px
+        .tag
+            padding-left: 8px
+            &__icon
+                align-self: self-start
+    
+    .section-contacts
+        .section__wrapper
+            padding-top: 24px
+        &__wrapper
+            grid-template-columns: 100%
+            gap: 48px
+        &__map
+            aspect-ratio: unset
+            height: 100vh
+            height: 100svh
+        &__phone
+            padding-bottom: 24px
+            font-size: 2rem
+        p
+            padding-bottom: 32px
+            font-size: 1rem
+        p.is-last
+            padding-bottom: 24px
+
+    .section--inner
+        padding-top: 32px

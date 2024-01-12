@@ -30,11 +30,11 @@ h1
 //     &:hover:before
 //         transform: translateX(0)
 
-// .link-accent
-//     color: var(--text-accent)
+.link-accent
+    color: var(--text-accent)
 
-// .link-black
-//     color: var(--text-black)
+.link-black
+    color: var(--text-black)
 
 .link 
     text-decoration: none !important
@@ -213,12 +213,20 @@ h1
     font-size: 1.125rem
     font-weight: bold
     margin-bottom: 24px
+    display: flex
+    line-height: 1.3
     &__icon
         color: var(--text-blue)
         width: 24px
         height: 24px
         vertical-align: sub
         margin-right: 12px
+
+.subtitle--white
+    color: #fff
+    border-color: rgba(255, 255, 255, 0.25)
+    .subtitle__icon
+        color: inherit
 
 .border-radius
     border-radius: 24px 0 0 0
@@ -284,8 +292,11 @@ h1
             font-size: 1.125rem
             margin-bottom: 48px
             line-height: 1.3
+            &.is-last,
             &:last-child
                 margin-bottom: 0
+        .btn
+            display: none
 
     &__nav-column
         display: flex
@@ -316,15 +327,8 @@ h1
 
     &.is-fixed
         position: fixed
-        background-color: #fff
-        color: var(--text-black)
-        z-index: 3
-        padding-bottom: 24px
         .header__expanded
             display: block
-        .header__logo-picture
-            background-image: url('./../images/logo-blue.svg')
-
         .btn-header
             background-color: var(--bg-blue)
             &__line
@@ -336,6 +340,18 @@ h1
                     transform: rotate(-45deg)
                     margin-top: -3px
 
+    &.is-fixed,
+    &.header--inner
+        background-color: #fff
+        color: var(--text-black)
+        z-index: 3
+        padding-bottom: 24px
+        .header__logo-picture
+            background-image: url('./../images/logo-blue.svg')
+        .btn-header
+            background-color: var(--bg-blue)
+            &__line
+                background-color: #fff
         .btn
             background: #fff
             border: 1px solid var(--bg-light-blue)
@@ -354,6 +370,9 @@ h1
                     background-color: #fff
                     svg
                         stroke: var(--text-blue)
+
+.header--inner
+    position: relative
 
 .orbit
     position: absolute
@@ -386,16 +405,44 @@ h1
         display: flex
         flex-direction: column
         align-items: start
+    &--blue
+        background-color: var(--bg-blue)
 
 .section-main
     height: 100vh
     height: 100svh
-    background: url(./../images/main.jpg) center center/cover
+    // background: url(./../images/main.jpg) center center/cover
     color: #fff
     overflow: hidden
     position: relative
     padding-top: 92px
     padding-bottom: var(--template-padding)
+
+    &__bg-wrapper
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+
+    &__bg
+        grid-column: full-width !important
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background-position: center center
+        background-size: cover
+        background-repeat: no-repeat
+        opacity: 0
+        transition: 1s opacity
+        z-index: -2
+        &.is-active
+            opacity: 1
+            z-index: 0
+        &.is-next
+            z-index: -1
 
     .orbit-left
         left: -300px
@@ -448,6 +495,21 @@ h1
                 margin-right: 12px
                 display: inline-block
 
+.section-main--inner
+    height: 500px
+    .orbit-left
+        left: -360px
+        bottom: -650px
+    .orbit-right
+        right: -500px
+        top: -440px
+    .section-main
+        &__title-container
+            justify-content: flex-end
+    h1
+        font-size: 3.75em
+
+
 .stats-cards
     display: grid
     grid-template-columns: 1fr 1fr
@@ -476,10 +538,22 @@ h1
     .project
         flex: 0 0 318px
 
+
+.projects-slider
+    width: 100%
+    .projects
+        display: flex
+        overflow: hidden
+        gap: 24px
+
 .projects
-    display: flex
-    gap: 24px
-    overflow: hidden
+    display: grid
+    grid-template-columns: [line-start] 1fr 1fr 1fr 1fr [line-end]
+    column-gap: 24px
+    row-gap: 48px
+    .project__line
+        border-bottom: 1px solid var(--bg-light-blue)
+        grid-column: line
 
 .slider-buttons
     display: flex
@@ -503,9 +577,6 @@ h1
             width: 24px
             height: 24px
             stroke: var(--text-blue)
-
-.projects-slider
-    width: 100%
 
 .project
     position: relative
@@ -560,6 +631,7 @@ h1
     font-size: 0.875rem
     line-height: 1.3
     &__icon
+        flex: 0 0 24px
         width: 24px
         height: 24px
         stroke: var(--text-blue)
@@ -580,6 +652,7 @@ h1
         max-width: 1342px
         aspect-ratio: 1342/779
     &__marker
+        // opacity: 0
         --color: #D08935
         position: absolute
         width: 162px
@@ -594,6 +667,8 @@ h1
         align-items: center
         justify-content: center
         transition: all 0.2s
+        &.is-active
+            opacity: 1
         &::before,
         &::after
             display: block
@@ -628,6 +703,13 @@ h1
         &--af
             bottom: 29%
             left: 48%
+
+.map-scroll-wrapper
+    // height: 200vh
+    position: relative
+    .map
+        position: sticky
+        top: var(--template-padding)
 
 .services
     display: grid
@@ -714,24 +796,37 @@ h1
         border-radius: 0 0 8px 8px
         background-color: var(--bg-blue)
 
+.section-services
+    background-color: var(--bg-light-blue)
+    &__title-box
+        height: calc(50% - 24px)
+        border: 1px solid #BFC9D2
+
 .section-advantages
     background-color: var(--bg-blue)
+    &__title-box
+        color: #fff
+        height: calc(33% - 12px)
+        border: 1px solid  rgba(255, 255, 255, 0.15)
+        .subtitle__icon
+                color: #fff
+
+.section-services,
+.section-advantages
     .section__wrapper
         position: relative
     &__title-box
-        border: 1px solid rgba(255, 255, 255, 0.15)
         padding: 24px
-        color: #fff
         position: absolute
         width: calc(50% - 12px)
-        height: calc(33% - 12px)
         left: 0
+        display: flex
+        flex-direction: column
+        justify-content: space-between
         .title
+            padding-bottom: 0
             max-width: none
             font-size: 2.5rem
-        .subtitle
-            &__icon
-                color: #fff
 
 .advantages
     display: grid
@@ -774,6 +869,44 @@ h1
     &__description
         line-height: 1.3
 
+.section-services
+    .advantages
+        grid-template-columns: 1fr 1fr 1fr 1fr
+    .advantage
+        flex-direction: column
+        border-right: none
+        &__left
+            border-right: none
+            border-bottom: 1px solid var(--bg-light-blue)
+            flex: 0 0 200px
+            margin-bottom: 24px
+        &__right
+            padding: 0
+
+.section-payload-kinds
+
+.payload-kinds
+    display: flex
+    background-color: #fff
+    &__image-box
+        flex: 1 0 612px
+    &__body
+        display: grid
+        grid-template-columns: 1fr 1fr
+        grid-template-rows: 1fr 1fr 1fr
+        gap: 24px
+        padding: 48px
+    &__item
+        border: 1px solid var(--bg, #D5DFE9)
+        padding: 16px
+        line-height: 1.3
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+    &__icon
+        width: 48px
+        height: 48px
+    
 .section-clients
     background-color: var(--bg-light-blue)
     .title__border
@@ -790,6 +923,196 @@ h1
         background-color: #fff
         align-items: center
         justify-content: center
+
+.section-contacts
+    font-size: 1.125rem
+    line-height: 1.3
+    &__body
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        align-items: flex-start
+    .section__wrapper
+        border-top: 1px solid var(--bg-light-blue)
+        padding-top: 32px
+    &__title
+        font-size: 0.875rem
+        color: var(--text-grey)
+        margin-bottom: 12px
+    &__phone
+        font-size: 3rem
+        font-weight: bold
+        color: var(--text-blue)
+        padding-bottom: 32px
+        margin-bottom: 32px
+        border-bottom: 1px solid var(--bg-light-blue)
+    p
+        padding-bottom: 48px
+        line-height: 1.3
+    &__wrapper
+        display: grid
+        grid-template-columns: 1fr 1fr
+        gap: 24px
+    &__map
+        border: 5px solid tomato
+        height: 550px
+
+.section-about
+
+.about
+    background-color: var(--bg-light-blue)
+    padding: 60px
+    display: flex
+    flex-direction: column
+    align-items: center
+    position: relative
+    &__border
+        position: absolute
+        border: 1px solid #BFC9D2
+        border-top: none
+        border-radius: 24px
+        transform: translateX(-50%)
+        width: 60%
+        height: 320px
+        left: 50%
+        top: 190px
+        z-index: 0
+        &::before
+            position: absolute
+            display: block
+            content: ""
+            height: 70px
+            width: 1px
+            background-color: #BFC9D2
+            left: 50%
+            transform: translateX(-50%)
+            bottom: -70px
+        &::after
+            position: absolute
+            display: block
+            content: ""
+            position: absolute
+            width: 8px
+            height: 8px
+            border-radius: 50%
+            left: 50%
+            bottom: -78px
+            transform: translateX(-50%)
+            background-color: var(--bg-blue)
+            box-shadow: 0 0 0 4px #fff
+
+    &__top
+        display: grid
+        grid-template-columns: 1fr 200px 1fr
+        margin-bottom: 210px
+        z-index: 1
+    &__company-box
+        background-color: #fff
+        padding: 24px
+    &__company-title
+        font-size: 2.5rem
+        font-weight: bold
+        padding-bottom: 16px
+    &__company-description
+        line-height: 1.3
+        font-size: 1.125rem
+    &__plus
+        position: relative
+        display: flex
+        align-items: center
+        justify-content: center
+        svg
+            z-index: 1
+        &::before
+            position: absolute
+            content: ""
+            display: block
+            width: 80px
+            height: 80px
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            border-radius: 50%
+            background-color: var(--bg-blue)
+            z-index: 0
+    &__bottom
+        text-align: center
+        max-width: 512px
+        display: flex
+        flex-direction: column
+        align-items: center
+        &-title
+            font-size: 3rem
+            margin-bottom: 24px
+            font-weight: bold
+        &-description
+            margin-bottom: 48px
+            line-height: 1.3
+    &__logo
+        width: 202px
+        height: 76px
+
+.section-text
+    h1
+        padding-bottom: 80px
+        font-size: 3.75rem
+    .text__columns
+        display: grid
+        grid-template-columns: 1fr 1fr
+        gap: 48px
+        margin-bottom: 140px
+        &.is-last
+            margin-bottom: 0
+    .text__column-space-between
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        justify-content: space-between
+    p
+        font-size: 1.125rem
+        line-height: 1.3
+        margin-bottom: 32px
+        &:last-child
+            margin-bottom: 0
+    &__direction
+        border: 1px solid var(--bg-light-blue)
+    &__direction-body
+        padding: 48px
+        padding-left: 0
+    &__border-top
+        border-top: 1px solid var(--bg-light-blue)
+        padding-top: 32px
+
+.section-directions-cards
+
+.directions-cards
+    display: grid
+    grid-template-columns: 1fr 1fr 1fr
+    gap: 24px
+    &__card
+        background-color: var(--bg-light-blue)
+        padding: 24px
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        &-title
+            font-size: 2rem
+            font-weight: bold
+            margin-bottom: 24px
+        &-icon
+            width: 68px
+            height: 68px
+        ul
+            list-style: none
+            display: flex
+            flex-wrap: wrap
+            gap: 8px
+            margin-bottom: 32px
+        li
+            background-color: #fff
+            padding: 11px 16px
+            border-radius: 24px
+            line-height: 1.3
 
 .footer
     padding: 80px 0 var(--template-padding)

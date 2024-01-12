@@ -70,9 +70,74 @@ const footer = () => {
 
 }
 
+const projectsBorder = () => {
+
+    const $projects = document.getElementById('projects');
+    if (!$projects) return;
+
+    const i = $projects.querySelectorAll('.project').length;
+    let perLine = 4;
+    
+    switch (true) {
+        case (window.innerWidth < 767):
+            perLine = 1;
+            break;
+        case (window.innerWidth < 1280):
+            perLine = 2;
+            break;
+    }
+
+    for (let k = 1; k <= Math.ceil(i/perLine); k++) {
+        const $line = document.createElement('div');
+        $line.className = 'project__line';
+        const startRow = k*2;
+        const endtRow  = startRow + 1;
+        $line.style.gridRow = startRow + '/' + endtRow;
+        $projects.appendChild($line);
+    }
+
+}
+
+const yandexMap = () => {
+    const pin = {
+        iconLayout: 'default#image',
+        iconImageHref: './images/map-pin.png',
+        iconImageSize: [38, 38],
+        iconImageOffset: [-19,-19]
+    }
+    let myMap = new ymaps.Map("map", {
+        center: [59.933023, 30.304603],
+        zoom: 16
+    });
+    let myPlacemark = new ymaps.Placemark(myMap.getCenter(), {}, pin)
+    myMap.geoObjects.add(myPlacemark);
+}
+
+const mapScroll = () => {
+
+    return;
+
+    const $map = document.getElementById('map-scroll');
+
+    function onScroll(e) {
+        console.log(e)
+    }
+
+    const observer = new IntersectionObserver(function(e) {
+        if (e[0].isIntersecting) {
+            document.addEventListener('scroll', onScroll)
+        } else {
+            // document.removeEventListener('scroll', onScroll)
+        }
+    })
+    observer.observe($map)
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     headerButton();
+    projectsBorder();
+    mapScroll();
 
     footer();
     // window.addEventListener('resize', footer)
