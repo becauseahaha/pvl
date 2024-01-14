@@ -100,6 +100,7 @@
             &-controls
                 left: 43px
 
+    .section-services,
     .section-advantages
         &__title-box
             margin-bottom: 24px
@@ -157,6 +158,72 @@
             height: unset
         &__phone
             padding-bottom: 32px
+
+    .section-text
+        &__direction
+            grid-template-columns: 100% !important
+
+    .directions-cards
+        grid-template-columns: 1fr 1fr
+        grid-template-rows: 1fr 1fr
+        &__card
+            &:last-child
+                grid-column: 1/3
+
+    .payload-kinds
+        flex-direction: column-reverse
+        gap: 0
+        &__image-box
+            flex: none
+            border-top-left-radius: 24px
+            overflow: hidden
+        &__icon
+            margin-bottom: 24px
+
+    .section-text
+        p
+            margin-bottom: 24px
+        .text__columns--first,
+        .text__columns--third
+            .btn
+                margin-top: 24px
+        .text__columns--first
+            grid-template-columns: 35% auto
+        .text__columns--third
+            grid-template-columns: 55% auto
+        .text__columns--fourth
+            grid-template-columns: auto 30%
+            &>div:first-child
+                order: 1
+        .title
+            font-size: 2.5rem
+        .text,
+        .text__columns
+            gap: 24px
+            margin-bottom: 100px
+        .section-text
+            &__direction
+                gap: 0
+            &__direction-body
+                padding: 24px
+                .title__border
+                    padding-bottom: 24px
+
+    .asia-page-flags
+        width: 207px
+        height: 111px
+
+    .accordion
+        &__header
+            font-size: 1.5rem
+            gap: 48px
+        &__item
+            font-size: 0.875em
+
+    .btn-plus,
+    .btn-minus
+        width: 48px
+        height: 48px
 
 
 @media (max-width: 767px)
@@ -296,11 +363,17 @@
                 &::after
                     display: none
 
-    .section-advantages
+    .section-advantages,
+    .section-services
         &__title-box
             padding: 16px
             .title
                 font-size: 1.3125rem
+
+    
+    .section-services
+        .advantage__description
+            font-size: 1rem
 
     .advantages
 
@@ -377,3 +450,76 @@
 
     .section--inner
         padding-top: 32px
+
+    
+    .section-text
+        font-size: 1rem
+        padding-top: 26px
+        .text,
+        .text__columns
+            grid-template-columns: 100%
+            margin-bottom: 68px
+        .text__columns--first
+            position: relative
+            margin-bottom: 168px
+            .btn
+                position: absolute
+                bottom: calc(-52px - 32px)
+        .title
+            padding-bottom: 12px
+            font-size: 1.5rem
+        .subtitle
+            font-size: 1rem
+            margin-bottom: 0
+        p
+            font-size: 1rem
+        h1
+            font-size: 2.25rem
+            padding-bottom: 32px
+            margin-bottom: 0
+
+        .section-text__direction-body
+            padding: 16px
+
+    .text__columns--third
+        .text__column-space-between
+            order: 1
+            .btn
+                margin-top: 32px
+    
+    .section-text
+        .text__columns--fourth
+            &>div:first-child
+                order: 0
+
+
+    .directions-cards
+        display: flex
+        flex-direction: column
+        &__card
+            padding: 16px
+            &:last-child
+                grid-column: none
+            &-title
+                font-size: 1.5rem
+                margin-bottom: 16px
+            ul
+                gap: 4px
+                margin-bottom: 24px
+
+    .payload-kinds
+        &__body
+            display: flex
+            flex-direction: column
+            padding: 16px
+            gap: 14px
+        &__item
+            flex-direction: row
+            justify-content: flex-start
+            align-items: center
+            gap: 16px
+        &__icon
+            margin-bottom: 0
+
+    .asia-page-flags
+        margin-bottom: 12px
