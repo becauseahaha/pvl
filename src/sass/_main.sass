@@ -1,7 +1,7 @@
 body
     font-family: Inter
     background-color: #fff
-    padding-bottom: 100vh
+    // padding-bottom: 100vh
 
 main
     position: relative
@@ -12,23 +12,23 @@ h1
     font-size: 5rem
     font-weight: bold
 
-// .link
-//     display: inline-flex
-//     overflow: hidden
-//     position: relative
-//     padding-bottom: 2px
-//     &:before
-//         content: ''
-//         position: absolute
-//         transition: transform .5s ease
-//         left: 0
-//         bottom: 0
-//         width: 100%
-//         height: 1px
-//         background: currentColor
-//         transform: translateX(-100%)
-//     &:hover:before
-//         transform: translateX(0)
+.blinking-cursor
+    display: inline-block
+    width: 2px
+    // height: 90%
+    background-color: currentColor
+    margin-left: 8px
+    animation: blink .6s linear infinite alternate
+
+@keyframes blink
+    0%
+        opacity: 1
+    40%
+        opacity: 1
+    60%
+        opacity: 0
+    100%
+        opacity: 0
 
 .link-accent
     color: var(--text-accent)
@@ -36,7 +36,7 @@ h1
 .link-black
     color: var(--text-black)
 
-.link 
+.link
     text-decoration: none !important
     line-height: 1.3
     background-image: linear-gradient(90deg, currentColor 50%, transparent 50%)
@@ -179,7 +179,6 @@ h1
 .btn-arrow
     padding-right: 16px
 
-
 .btn-white
     background-color: #fff
     color: var(--black)
@@ -218,7 +217,6 @@ h1
             stroke: #fff
     &::after
         background-color: #fff
-        
 
 .btn-language
     padding-left: 24px
@@ -311,7 +309,7 @@ h1
     z-index: 2
     color: #fff
     padding-top: 40px
-    transition: background 0.1s 
+    transition: background 0.1s
     &__main
         display: flex
         justify-content: space-between
@@ -462,7 +460,6 @@ h1
     left: calc(50% - 4px)
     animation: planet 10s linear infinite
 
-
 @keyframes planet
     0%
         transform: rotate(0deg) translateX(-500px) rotate(0deg)
@@ -581,7 +578,6 @@ h1
     h1
         font-size: 3.75em
 
-
 .stats-cards
     display: grid
     grid-template-columns: 1fr 1fr
@@ -609,7 +605,6 @@ h1
 .section-projects
     .project
         flex: 0 0 318px
-
 
 .projects-slider
     width: 100%
@@ -724,7 +719,7 @@ h1
         max-width: 1342px
         aspect-ratio: 1342/779
     &__marker
-        // opacity: 0
+        opacity: 0
         --color: #D08935
         position: absolute
         width: 162px
@@ -777,7 +772,7 @@ h1
             left: 48%
 
 .map-scroll-wrapper
-    // height: 200vh
+    height: 200vh
     position: relative
     .map
         position: sticky
@@ -869,7 +864,6 @@ h1
         background-color: var(--bg-blue)
 
 .section-services
-    background-color: var(--bg-light-blue)
     &__title-box
         height: calc(50% - 24px)
         border: 1px solid #BFC9D2
@@ -879,9 +873,9 @@ h1
     &__title-box
         color: #fff
         height: calc(33% - 12px)
-        border: 1px solid  rgba(255, 255, 255, 0.15)
+        border: 1px solid rgba(255, 255, 255, 0.15)
         .subtitle__icon
-                color: #fff
+            color: #fff
 
 .section-services,
 .section-advantages
@@ -979,7 +973,7 @@ h1
     &__icon
         width: 48px
         height: 48px
-    
+
 .section-clients
     background-color: var(--bg-light-blue)
     .title__border
@@ -1027,7 +1021,6 @@ h1
         grid-template-columns: 1fr 1fr
         gap: 24px
     &__map
-        border: 5px solid tomato
         height: 550px
 
 .section-about
@@ -1197,12 +1190,11 @@ h1
     padding: 80px 0 var(--template-padding)
     background: var(--bg-black)
     color: #fff
-    z-index: 0
-    position: fixed
-    // top: 0
-    left: 0
-    right: 0
-    bottom: 0
+    // z-index: 0
+    // position: fixed
+    // left: 0
+    // right: 0
+    // bottom: 0
 
     .title__border
         border-color: rgba(255, 255, 255, 0.25)
@@ -1255,7 +1247,6 @@ h1
         line-height: 1.3
         align-self: flex-start
 
-
 .backdrop
     position: fixed
     content: ""
@@ -1293,11 +1284,12 @@ h1
         width: 50%
         background-color: #fff
         padding: var(--template-padding)
+        overflow-y: auto
     &__close
         position: absolute
-        left: -24px
+        right: 50%
         top: 48px
-        transform: translateX(-100%)
+        transform: translateX(-24px)
         z-index: 4
         .btn
             padding: 14px 38px
@@ -1305,6 +1297,29 @@ h1
         .icon-svg
             width: 24px
             height: 24px
+
+.popup--project
+    .popup-window
+        width: 65%
+    .popup__close
+        right: 65%
+    .title
+        padding-bottom: 24px
+    .tags
+        margin-bottom: 48px
+    .images-box-slider
+        margin-bottom: 48px
+    &__description
+        display: flex
+        gap: 60px
+        & > div
+            border-top: 1px solid var(--bg-light-blue)
+            padding-top: 32px
+        .title
+            font-size: 2rem
+            padding-bottom: 24px
+        p
+            line-height: 1.3
 
 .images-box-slider
     position: relative

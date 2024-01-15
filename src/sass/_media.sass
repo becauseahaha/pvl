@@ -142,12 +142,30 @@
         justify-content: center
         align-items: flex-end
         &__close
-            left: 50%
-            top: -16px
-            transform: translate(-50%, -100%)
+            right: 50% !important
+            top: 16px
+            transform: translate(50%, 0)
+
+    .popup--project .popup-window,
     .popup-window
         width: 100%
         height: calc(100vh - 84px)
+
+    .popup--project
+        .title
+            font-size: 2.5rem
+            padding-bottom: 16px
+        .tags,
+        .images-box-slider
+            margin-bottom: 32px
+        &__description
+            gap: 24px
+            & > div
+                padding-top: 24px
+            .title
+                font-size: 2rem
+                padding-bottom: 12px
+
 
     .section-contacts
         &__wrapper
@@ -225,6 +243,23 @@
         width: 48px
         height: 48px
 
+    .about
+        padding: 24px
+        &__top
+            grid-template-columns: 100%
+            grid-template-rows: auto 128px auto
+        &__border
+            width: 80%
+            top: 30%
+        &__company-title,
+        &__bottom-title
+            font-size: 2rem
+        &__bottom-title
+            margin-bottom: 16px
+        &__company-description,
+        &__bottom-description
+            font-size: 1rem
+
 
 @media (max-width: 767px)
 
@@ -253,6 +288,10 @@
     h1
         font-size: 2.25rem
         margin-bottom: 16px
+    .section-main--inner
+        h1
+            font-size: 2.25rem
+            margin-bottom: 0
 
     .form-row
         margin-bottom: 24px
@@ -403,7 +442,7 @@
         gap: 14px
 
     .footer
-        position: relative
+        // position: relative
         padding-top: 48px
         .title
             font-size: 1.5rem
@@ -523,3 +562,31 @@
 
     .asia-page-flags
         margin-bottom: 12px
+    
+
+    .about
+        padding: 16px
+        &__border
+            top: 45%
+        &__company-title,
+        &__bottom-title
+            font-size: 1.5rem
+        &__logo
+            width: 162px
+            height: 60px
+
+    .popup--project
+        .title
+            font-size: 1.5rem
+        &__description
+            gap: 32px
+            flex-direction: column
+            & > div
+                padding-top: 24px
+            .title
+                font-size: 1.5rem
+
+    .images-box-slider
+        &__controls
+            right: 12px
+            bottom: 12px
