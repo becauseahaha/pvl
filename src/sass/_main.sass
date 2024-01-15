@@ -116,9 +116,9 @@ h1
     padding: 20px 16px 19px
     border-radius: 24px 0px 0px 0px
     &:focus
-        box-shadow: inset 0 0 2px var(--bg-blue)
+        box-shadow: inset 0 0 0 2px var(--bg-blue)
     &.is-error
-        box-shadow: inset 0 0 1px #E81A0C
+        border-color:#E81A0C
 
 .btn
     position: relative
@@ -722,8 +722,6 @@ h1
         opacity: 0
         --color: #D08935
         position: absolute
-        width: 162px
-        height: 162px
         background-color: var(--color)
         color: #fff
         font-size: 1.125rem
@@ -734,7 +732,11 @@ h1
         align-items: center
         justify-content: center
         transition: all 0.2s
+        width: 162px
+        height: 162px
+        transform: scale(0)
         &.is-active
+            transform: scale(1)
             opacity: 1
         &::before,
         &::after
@@ -863,7 +865,10 @@ h1
         border-radius: 0 0 8px 8px
         background-color: var(--bg-blue)
 
+.section-services-main
+
 .section-services
+    background-color: var(--bg-light-blue)
     &__title-box
         height: calc(50% - 24px)
         border: 1px solid #BFC9D2

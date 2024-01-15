@@ -189,23 +189,106 @@ const yandexMap = () => {
 };
 
 const mapScroll = () => {
-    return;
 
     const $map = document.getElementById("map-scroll");
+    if ($map === null) return;
 
-    function onScroll(e) {
-        console.log(e);
+    const $markers = $map.querySelectorAll('.map__marker');
+
+    let params, offset;
+
+    function onScroll() {
+
+        params = $map.getBoundingClientRect()
+        offset = (params.height - params.y-params.height) / params.height*100;
+
+        if (offset > 0) {
+            $markers[0].classList.add('is-active');
+        } else {
+            $markers[0].classList.remove('is-active');
+        }
+        if (offset > 15) {
+            $markers[1].classList.add('is-active');
+        } else {
+            $markers[1].classList.remove('is-active');
+        }
+        if (offset > 30) {
+            $markers[2].classList.add('is-active');
+        } else {
+            $markers[2].classList.remove('is-active');
+        }
+        if (offset > 45) {
+            $markers[3].classList.add('is-active');
+        } else {
+            $markers[3].classList.remove('is-active');
+        }
     }
 
     const observer = new IntersectionObserver(function (e) {
         if (e[0].isIntersecting) {
-            document.addEventListener("scroll", onScroll);
+            window.addEventListener("scroll", onScroll);
         } else {
-            // document.removeEventListener('scroll', onScroll)
+            window.removeEventListener('scroll', onScroll)
         }
     });
+
     observer.observe($map);
 };
+
+
+const forms = () => {
+
+    const $contact = document.getElementById('contact-form');
+    const $contact_submit = $contact.querySelector('.js-submit');
+
+    $contact_submit.addEventListener('click', () => {
+
+        $contact.dataset.errors = 0;
+
+        const phone = $contact.querySelector('input[name="phone"]');
+        const name = $contact.querySelector('input[name="name"]');
+        const message = $contact.querySelector('[name="message"]');
+
+        if (phone.value.length == 0) {
+            phone.classList.add('is-error');
+            $contact.dataset.errors++;
+        } else {
+            phone.classList.remove('is-error');
+        }
+        if (name.value.length == 0) {
+            name.classList.add('is-error');
+            $contact.dataset.errors++;
+        } else {
+            name.classList.remove('is-error');
+        }
+        if (message.value.length == 0) {
+            message.classList.add('is-error');
+            $contact.dataset.errors++;
+        } else {
+            message.classList.remove('is-error');
+        }
+
+        if ($contact.dataset.errors > 0) return;
+
+        const formData = new FormData($contact);
+        $contact.style.display = 'none';
+        document.getElementById('contact-form-success').style.display = 'block';
+        return;
+        fetch("/mailer.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(function(serverPromise) { 
+            serverPromise.json()
+            .then(function(data) { 
+                $contact.style.display = 'none';
+                document.getElementById('contact-form-success').style.display = 'flex';
+            });
+        });
+
+    })
+
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     headerButton();
@@ -213,6 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
     mapScroll();
     typingText();
     accordion();
+    forms();
 
     if (typeof ymaps !== "undefined") ymaps.ready(yandexMap);
 
