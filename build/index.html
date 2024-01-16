@@ -103,103 +103,106 @@
                         </div>
                     </div>
                 </div>
+                <button class="section-main__annoying-btn js-scroll-to" data-target="second-screen"><img src="./images/icon-arrow-down.svg"></button>
             </div>
         </section>
         <section class="content-grid section section-projects">
-            <div class="section__wrapper">
+            <div class="section__wrapper" id="second-screen">
                 <div class="subtitle"><svg viewBox="0 0 24 24" class="subtitle__icon"><use href="#icon-small-logo"></use></svg> Проекты</div>
                 <div class="title__border">
                     <div class="title">Ваши масштабные проекты — наши эффективные решения</div>
                     <div class="slider-buttons">
-                        <button class="slider-buttons__prev btn btn-light-blue"><span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow"></use></svg></span></button>
-                        <button class="slider-buttons__next btn btn-light-blue"><span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow"></use></svg></span></button>
+                        <button class="swiper-projects-prev slider-buttons__prev btn btn-light-blue"><span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow"></use></svg></span></button>
+                        <button class="swiper-projects-next slider-buttons__next btn btn-light-blue"><span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow"></use></svg></span></button>
                     </div>
                 </div>
                 <div class="projects-slider">
-                    <div class="projects">
-                        <div class="project">
-                            <a href="#" class="project__image-wrapper project__link js-popup-show" data-target="popup-project">
-                                <picture>
-                                    <source srcset="./images/project-1@2x.jpg 1.5x" />
-                                    <img src="./images/project-1.jpg" loading="lazy" class="project__image border-radius" alt="Транспортировка пивоваренных емкостей">
-                                </picture>
-                                <div class="project__goto-btn btn btn-white">
-                                    <span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow-project"></use></svg></span>
+                    <div class="projects swiper swiper-projects">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide project">
+                                <a href="#" class="project__image-wrapper project__link js-popup-show" data-target="popup-project">
+                                    <picture>
+                                        <source srcset="./images/project-1@2x.jpg 1.5x" />
+                                        <img src="./images/project-1.jpg" loading="lazy" class="project__image border-radius" alt="Транспортировка пивоваренных емкостей">
+                                    </picture>
+                                    <div class="project__goto-btn btn btn-white">
+                                        <span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow-project"></use></svg></span>
+                                    </div>
+                                </a>
+                                <div class="project__title"><a href="" class="link js-popup-show" data-target="popup-project">Транспортировка пивоваренных емкостей</a></div>
+                                <div class="project__tags tags">
+                                    <div class="tag tag--direction">Москва <svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-arrow"></use></svg> Иркутск</div>
+                                    <div class="tag tag--year"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-clock"></use></svg> 2023 год</div>
+                                    <div class="tag tag--purpose"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-list"></use></svg> Пищевая промышленность</div>
                                 </div>
-                            </a>
-                            <div class="project__title"><a href="" class="link js-popup-show" data-target="popup-project">Транспортировка пивоваренных емкостей</a></div>
-                            <div class="project__tags tags">
-                                <div class="tag tag--direction">Москва <svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-arrow"></use></svg> Иркутск</div>
-                                <div class="tag tag--year"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-clock"></use></svg> 2023 год</div>
-                                <div class="tag tag--purpose"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-list"></use></svg> Пищевая промышленность</div>
                             </div>
-                        </div>
-                        <div class="project">
-                            <a href="#" class="project__image-wrapper project__link js-popup-show" data-target="popup-project">
-                                <picture>
-                                    <source srcset="./images/project-1@2x.jpg 1.5x" />
-                                    <img src="./images/project-1.jpg" loading="lazy" class="project__image border-radius" alt="Транспортировка пивоваренных емкостей">
-                                </picture>
-                                <div class="project__goto-btn btn btn-white">
-                                    <span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow-project"></use></svg></span>
+                            <div class="swiper-slide project">
+                                <a href="#" class="project__image-wrapper project__link js-popup-show" data-target="popup-project">
+                                    <picture>
+                                        <source srcset="./images/project-2@2x.jpg 1.5x" />
+                                        <img src="./images/project-2.jpg" loading="lazy" class="project__image border-radius" alt="Транспортировка пивоваренных емкостей">
+                                    </picture>
+                                    <div class="project__goto-btn btn btn-white">
+                                        <span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow-project"></use></svg></span>
+                                    </div>
+                                </a>
+                                <div class="project__title"><a href="" class="link js-popup-show" data-target="popup-project">Транспортировка пивоваренных емкостей</a></div>
+                                <div class="project__tags tags">
+                                    <div class="tag tag--direction">Москва <svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-arrow"></use></svg> Иркутск</div>
+                                    <div class="tag tag--year"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-clock"></use></svg> 2023 год</div>
+                                    <div class="tag tag--purpose"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-list"></use></svg> Пищевая промышленность</div>
                                 </div>
-                            </a>
-                            <div class="project__title"><a href="" class="link js-popup-show" data-target="popup-project">Транспортировка пивоваренных емкостей</a></div>
-                            <div class="project__tags tags">
-                                <div class="tag tag--direction">Москва <svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-arrow"></use></svg> Иркутск</div>
-                                <div class="tag tag--year"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-clock"></use></svg> 2023 год</div>
-                                <div class="tag tag--purpose"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-list"></use></svg> Пищевая промышленность</div>
                             </div>
-                        </div>
-                        <div class="project">
-                            <a href="#" class="project__image-wrapper project__link js-popup-show" data-target="popup-project">
-                                <picture>
-                                    <source srcset="./images/project-1@2x.jpg 1.5x" />
-                                    <img src="./images/project-1.jpg" loading="lazy" class="project__image border-radius" alt="Транспортировка пивоваренных емкостей">
-                                </picture>
-                                <div class="project__goto-btn btn btn-white">
-                                    <span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow-project"></use></svg></span>
+                            <div class="swiper-slide project">
+                                <a href="#" class="project__image-wrapper project__link js-popup-show" data-target="popup-project">
+                                    <picture>
+                                        <source srcset="./images/project-3@2x.jpg 1.5x" />
+                                        <img src="./images/project-3.jpg" loading="lazy" class="project__image border-radius" alt="Транспортировка пивоваренных емкостей">
+                                    </picture>
+                                    <div class="project__goto-btn btn btn-white">
+                                        <span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow-project"></use></svg></span>
+                                    </div>
+                                </a>
+                                <div class="project__title"><a href="" class="link js-popup-show" data-target="popup-project">Транспортировка пивоваренных емкостей</a></div>
+                                <div class="project__tags tags">
+                                    <div class="tag tag--direction">Москва <svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-arrow"></use></svg> Иркутск</div>
+                                    <div class="tag tag--year"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-clock"></use></svg> 2023 год</div>
+                                    <div class="tag tag--purpose"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-list"></use></svg> Пищевая промышленность</div>
                                 </div>
-                            </a>
-                            <div class="project__title"><a href="" class="link js-popup-show" data-target="popup-project">Транспортировка пивоваренных емкостей</a></div>
-                            <div class="project__tags tags">
-                                <div class="tag tag--direction">Москва <svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-arrow"></use></svg> Иркутск</div>
-                                <div class="tag tag--year"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-clock"></use></svg> 2023 год</div>
-                                <div class="tag tag--purpose"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-list"></use></svg> Пищевая промышленность</div>
                             </div>
-                        </div>
-                        <div class="project">
-                            <a href="#" class="project__image-wrapper project__link js-popup-show" data-target="popup-project">
-                                <picture>
-                                    <source srcset="./images/project-1@2x.jpg 1.5x" />
-                                    <img src="./images/project-1.jpg" loading="lazy" class="project__image border-radius" alt="Транспортировка пивоваренных емкостей">
-                                </picture>
-                                <div class="project__goto-btn btn btn-white">
-                                    <span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow-project"></use></svg></span>
+                            <div class="swiper-slide project">
+                                <a href="#" class="project__image-wrapper project__link js-popup-show" data-target="popup-project">
+                                    <picture>
+                                        <source srcset="./images/project-4@2x.jpg 1.5x" />
+                                        <img src="./images/project-4.jpg" loading="lazy" class="project__image border-radius" alt="Транспортировка пивоваренных емкостей">
+                                    </picture>
+                                    <div class="project__goto-btn btn btn-white">
+                                        <span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow-project"></use></svg></span>
+                                    </div>
+                                </a>
+                                <div class="project__title"><a href="" class="link js-popup-show" data-target="popup-project">Транспортировка пивоваренных емкостей</a></div>
+                                <div class="project__tags tags">
+                                    <div class="tag tag--direction">Москва <svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-arrow"></use></svg> Иркутск</div>
+                                    <div class="tag tag--year"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-clock"></use></svg> 2023 год</div>
+                                    <div class="tag tag--purpose"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-list"></use></svg> Пищевая промышленность</div>
                                 </div>
-                            </a>
-                            <div class="project__title"><a href="" class="link js-popup-show" data-target="popup-project">Транспортировка пивоваренных емкостей</a></div>
-                            <div class="project__tags tags">
-                                <div class="tag tag--direction">Москва <svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-arrow"></use></svg> Иркутск</div>
-                                <div class="tag tag--year"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-clock"></use></svg> 2023 год</div>
-                                <div class="tag tag--purpose"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-list"></use></svg> Пищевая промышленность</div>
                             </div>
-                        </div>
-                        <div class="project">
-                            <a href="#" class="project__image-wrapper project__link js-popup-show" data-target="popup-project">
-                                <picture>
-                                    <source srcset="./images/project-1@2x.jpg 1.5x" />
-                                    <img src="./images/project-1.jpg" loading="lazy" class="project__image border-radius" alt="Транспортировка пивоваренных емкостей">
-                                </picture>
-                                <div class="project__goto-btn btn btn-white">
-                                    <span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow-project"></use></svg></span>
+                            <div class="swiper-slide project">
+                                <a href="#" class="project__image-wrapper project__link js-popup-show" data-target="popup-project">
+                                    <picture>
+                                        <source srcset="./images/project-1@2x.jpg 1.5x" />
+                                        <img src="./images/project-1.jpg" loading="lazy" class="project__image border-radius" alt="Транспортировка пивоваренных емкостей">
+                                    </picture>
+                                    <div class="project__goto-btn btn btn-white">
+                                        <span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow-project"></use></svg></span>
+                                    </div>
+                                </a>
+                                <div class="project__title"><a href="" class="link js-popup-show" data-target="popup-project">Транспортировка пивоваренных емкостей</a></div>
+                                <div class="project__tags tags">
+                                    <div class="tag tag--direction">Москва <svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-arrow"></use></svg> Иркутск</div>
+                                    <div class="tag tag--year"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-clock"></use></svg> 2023 год</div>
+                                    <div class="tag tag--purpose"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-list"></use></svg> Пищевая промышленность</div>
                                 </div>
-                            </a>
-                            <div class="project__title"><a href="" class="link js-popup-show" data-target="popup-project">Транспортировка пивоваренных емкостей</a></div>
-                            <div class="project__tags tags">
-                                <div class="tag tag--direction">Москва <svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-arrow"></use></svg> Иркутск</div>
-                                <div class="tag tag--year"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-clock"></use></svg> 2023 год</div>
-                                <div class="tag tag--purpose"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-list"></use></svg> Пищевая промышленность</div>
                             </div>
                         </div>
                     </div>

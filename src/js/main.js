@@ -437,10 +437,6 @@ const imagesGallery = () => {
 
         box.dataset.index = 0;
 
-        // slides[0].addEventListener('load', function() {
-        //     console.log(this.getBoundingClientRect())
-        // })
-
         if (slides[0].getBoundingClientRect().width > 0) {
             $container.style.width  = slides[0].getBoundingClientRect().width + 'px'
             $container.style.height = slides[0].getBoundingClientRect().height + 'px'
@@ -489,10 +485,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const swiperClients = new Swiper('.swiper-clients', {
         slidesPerView: 'auto',
-        spaceBetween: 24,
+        spaceBetween: 14,
         navigation: {
             nextEl: '.swiper-clients-next',
             prevEl: '.swiper-clients-prev'
+        },
+        breakpoints: {
+            768: {
+                spaceBetween: 24,
+            },
+            1280: {
+                slidesPerView: 5,
+                spaceBetween: 24,
+            }
         }
     });
+
+    const swiperProjects = new Swiper('.swiper-projects', {
+        slidesPerView: 'auto',
+        spaceBetween: 14,
+        navigation: {
+            nextEl: '.swiper-projects-next',
+            prevEl: '.swiper-projects-prev'
+        },
+        breakpoints: {
+            768: {
+                spaceBetween: 24,
+            },
+            1280: {
+                slidesPerView: 4,
+                spaceBetween: 24,
+            }
+        }
+    });
+
+    document.querySelectorAll('.js-scroll-to').forEach((el) => {
+        const scrollIntoViewWithOffset = (selector) => {
+            window.scrollTo({
+                behavior: "smooth",
+                top:
+                    document.querySelector(selector).getBoundingClientRect().top -
+                    document.body.getBoundingClientRect().top -
+                    20,
+            });
+        };
+        el.addEventListener('click', () => {
+            scrollIntoViewWithOffset('#'+el.dataset.target);
+        })
+    })
 });

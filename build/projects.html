@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body>
     <div class="backdrop" id="header-backdrop"></div>
@@ -65,8 +66,12 @@
     </header>
     <main>
         <section class="content-grid section section-main section-main--inner">
-            <div class="full-width section-main__bg-wrapper js-main-bgs-container">
-                <div class="section-main__bg is-active js-main-bg" style="background-image: url(./images/main-projects.jpg)"></div>
+            <div class="full-width section-main__bg-wrapper">
+                <div class="section-main__bg is-active" style="
+                    --bg: url(/images/main-projects.jpg);
+                    --bg-tablet: url(/images/main-projects-tablet.jpg);
+                    --bg-phone: url(/images/main-projects-phone.jpg);
+                "></div>
             </div>
             <div class="orbit orbit-left">
                 <div class="planet"></div>
@@ -356,7 +361,6 @@
         </div>
     </div>
 
-
     <div class="popup popup--project" id="popup-project">
         <div class="popup__close">
             <button class="btn btn-white js-popup-hide"><span class="btn_arrow"><svg class="icon-svg" viewBox="0 0 24 24"><use href="#icon-close"></use></svg></span></button>
@@ -368,16 +372,19 @@
                 <div class="tag"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-clock"></use></svg> 2023 год</div>
                 <div class="tag"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-list"></use></svg> Пищевая промышленность</div>
             </div>
-            <div class="images-box-slider js-images-box-slider">
+            <div class="images-box-slider js-gallery">
                 <div class="images-box-slider__controls">
-                    <button class="images-box-slider__prev btn btn-white"><span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow"></use></svg></span></button>
-                    <button class="images-box-slider__next btn btn-white"><span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow"></use></svg></span></button>
+                    <button class="images-box-slider__prev btn btn-white js-gallery-prev"><span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow"></use></svg></span></button>
+                    <button class="images-box-slider__next btn btn-white js-gallery-next"><span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow"></use></svg></span></button>
                 </div>
-                <div class="images-box-slider__wrapper">
+                <div class="images-box-slider__wrapper js-gallery-items">
                     <picture>
                         <source srcset="./images/popup-project-1-phone.jpg" media="(max-width: 767px)" />
                         <source srcset="./images/popup-project-1@2x.jpg 1.5x" />
-                        <img src="./images/popup-project-1.jpg" loading="lazy" class="border-radius is-active">
+                        <img src="./images/popup-project-1.jpg" class="images-box-slider__item border-radius js-gallery-item is-active">
+                    </picture>
+                    <picture>
+                        <img src="./images/main-2.jpg" class="images-box-slider__item border-radius js-gallery-item">
                     </picture>
                 </div>
             </div>
@@ -432,6 +439,7 @@
         </defs>
     </svg>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="./js/main.js"></script>
 </html>
 <!-- 

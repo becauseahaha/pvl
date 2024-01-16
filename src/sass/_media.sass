@@ -60,6 +60,9 @@
             right: -720px
             top: -440px
 
+    .stats-cards
+        margin-right: 92px
+
     .section-main--inner
         padding-bottom: var(--template-padding) !important
         .orbit-left
@@ -111,6 +114,8 @@
             top: unset
             width: 100%
             height: auto
+        .subtitle
+            margin-bottom: 48px
         .section__wrapper
             overflow: hidden
 
@@ -119,7 +124,7 @@
 
     .advantages
         display: flex
-        overflow: hidden
+        overflow-x: auto
 
     .advantage
         flex: 1 0 672px
@@ -334,12 +339,24 @@
         &__copyright-wrapper
             padding-bottom: var(--template-padding)
 
+    .section-main
+        padding-bottom: 16px
+        &__title-container
+            justify-content: flex-start
+            margin-top: 32px
+        &__annoying-btn
+            margin-top: 16px
+            margin-left: auto
+            margin-right: auto
+            position: relative
+
     .section-main--inner
         height: 350px
 
     .stats-cards
         grid-template-columns: 100%
         grid-template-rows: auto auto
+        margin-right: 0
         &__card
             padding: 16px
         &__card:last-child
@@ -417,6 +434,8 @@
 
     .section-advantages,
     .section-services
+        .subtitle
+            margin-bottom: 32px
         &__title-box
             padding: 16px
             .title
@@ -428,6 +447,7 @@
             font-size: 1rem
 
     .advantages
+        overflow-x: auto
 
     .advantage
         padding: 16px

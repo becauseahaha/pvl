@@ -118,7 +118,7 @@ h1
     &:focus
         box-shadow: inset 0 0 0 2px var(--bg-blue)
     &.is-error
-        border-color:#E81A0C
+        border-color: #E81A0C
 
 .btn
     position: relative
@@ -478,6 +478,14 @@ h1
     &--blue
         background-color: var(--bg-blue)
 
+@keyframes bounce
+    0%, 20%, 50%, 80%, 100%
+        transform: translateY(0)
+    40%
+        transform: translateY(-20px)
+    60%
+        transform: translateY(-10px)
+
 .section-main
     height: 100vh
     height: 100svh
@@ -487,6 +495,24 @@ h1
     position: relative
     padding-top: 92px
     padding-bottom: var(--template-padding)
+
+    &__annoying-btn
+        position: absolute
+        right: 0
+        bottom: 0
+        width: 72px
+        height: 52px
+        display: flex
+        justify-content: center
+        align-items: center
+        border-radius: 24px
+        border: 1px solid rgba(255, 255, 255, 0.25)
+        animation-name: bounce
+        animation-fill-mode: both
+        animation-duration: 1s
+        animation-iteration-count: infinite
+        img
+            width: auto
 
     &__bg-wrapper
         position: absolute
@@ -507,12 +533,19 @@ h1
         background-repeat: no-repeat
         opacity: 0
         transition: 1s opacity
-        z-index: -2
+
+        background-image: var(--bg)
+
+        @media (max-width: 1279px)
+            background-image: var(--bg-tablet, var(--bg))
+        @media (max-width: 767px)
+            background-image: var(--bg-phone, var(--bg))
+
         &.is-active
             opacity: 1
-            z-index: 0
+
         &.is-next
-            z-index: -1
+            // z-index: -1
 
     .orbit-left
         left: -300px
@@ -827,8 +860,8 @@ h1
             color: var(--text-grey)
             transition: none
             &:hover
-                cursor: pointer
-                background-color: #fff
+                // cursor: pointer
+                // background-color: #fff
             &::before
                 content: ""
                 display: block
@@ -895,11 +928,6 @@ h1
     &::after
         height: calc(100% + 24px)
 
-.services__list-item:hover
-    background-color: #fff
-
-
-
 .section-services-main
 
 .section-services
@@ -938,13 +966,16 @@ h1
 .advantages
     display: grid
     grid-template-columns: 1fr 1fr
+    width: 100%
     gap: 24px
     position: relative
+    scroll-snap-type: x mandatory
 
 .advantage
     padding: 24px
     background-color: #fff
     display: flex
+    scroll-snap-align: start
     &__left
         position: relative
         flex: 1 0 250px
