@@ -44,7 +44,6 @@ const typingText = () => {
         carouselList[0] = {'text': el.dataset.typingFirst}
         carouselList[1] = {'text': el.dataset.typingSecond}
         carousel(carouselList, el);
-        console.log(el.parentElement.offsetHeight)
         el.parentElement.style.height = el.parentElement.offsetHeight + 'px'
     })
 
@@ -290,6 +289,172 @@ const forms = () => {
 
 }
 
+const servicesMainSlider = () => {
+
+    const duration = 3;
+    const $box = document.getElementById('services-main-slider');
+    if ($box === null) return;
+    const $items = $box.querySelectorAll('.services__list-item');   
+    const $images = $box.querySelectorAll('.services__image');   
+    const $itemsContainer = $box.querySelector('.services__list');   
+
+    let i = 0, prev_i = 0, reset = false, timeoutID;
+
+    // $items.forEach(element => {
+    //     element.addEventListener('click', () => {
+
+    //         clearTimeout(timeoutID)
+            // setDuration(0.3)
+
+            // const el_index = Array.from(element.parentNode.children).indexOf(element) - 1;
+            // i = el_index;
+            // prev_i = i != 0 ? i-1 : 0;
+
+
+            // $items.forEach(element => {
+            //     element.classList.remove('is-filled');
+            //     element.classList.remove('is-active');
+            // });
+
+    //         for (let index = 0; index < i; index++) {
+    //             $items[index].classList.add('is-filled');
+    //         }
+
+    //         // setDuration(duration)
+
+    //         // element.classList.add('is-active')
+    //         timeoutID = setTimeout(switcher, 100);
+    //     })
+    // });
+
+    function setDuration(s) {
+        $items.forEach(element => {
+            element.style.transitionDuration = s + 's'
+        });
+    }
+
+    function switcher() {
+
+        if (reset) {
+
+            setDuration(0)
+            $items.forEach(element => {
+                element.classList.remove('is-filled');
+                element.classList.remove('is-active');
+            });
+            $images.forEach(element => {
+                element.classList.remove('is-active');
+            });
+            reset = false;
+
+            timeoutID = setTimeout(switcher, 100)    
+
+        } else {
+
+            setDuration(duration)
+    
+            $itemsContainer.scrollTo($items[i].offsetLeft-16, 0)
+            $items[i].classList.add('is-active')
+            $images[i].classList.add('is-active')
+            if (prev_i < i) {
+                $items[prev_i].classList.remove('is-active')
+                $images[prev_i].classList.remove('is-active')
+                $items[prev_i].classList.add('is-filled')
+            }
+    
+            prev_i = i;
+            i++;
+    
+            if ($items[i] == undefined) {
+                i = 0;
+                prev_i = 0;
+                reset = true;
+            }
+
+            timeoutID = setTimeout(switcher, duration*1000)    
+        }
+
+    }
+
+    setTimeout(switcher, 1);
+}
+
+const headerSlider = () => {
+    const container = document.querySelector('.js-main-bgs-container');
+    if (container == null) return;
+    const slides = container.querySelectorAll('.js-main-bg');
+    let i = 0, next_i = i+1, prev_i = slides.length-1;
+
+    function changeSlides() {
+        slides[prev_i].classList.remove('is-active');
+        slides[i].classList.add('is-active');
+        slides[i].classList.remove('is-next');
+        slides[next_i].classList.add('is-next');
+        prev_i = i;
+        i++;
+        if (i == slides.length) i = 0;
+        next_i = i+1;
+        if (next_i == slides.length) next_i = 0;
+    }
+    changeSlides();
+    setInterval(changeSlides, 5000);
+}
+
+const imagesGallery = () => {
+
+    const $box = document.querySelectorAll('.js-gallery');
+
+    if ($box.length == 0) return;
+
+    function changeSlides(direction) {
+
+        const slides = this.querySelectorAll('.js-gallery-item')
+        let i = this.dataset.index, prev_i;
+
+        if (direction == 'next') {
+            prev_i = i;
+            i++;
+            if (slides[i] == null) i = 0;
+        }
+        if (direction == 'prev') {
+            prev_i = i;
+            i--;
+            if (slides[i] == null) i = slides.length-1;
+        }
+
+        slides[prev_i].classList.remove('is-active');
+        slides[i].classList.add('is-active');
+
+        this.dataset.index = i;
+    }
+
+    $box.forEach(box => {
+
+        const $prev = box.querySelector('.js-gallery-prev');
+        const $next = box.querySelector('.js-gallery-next');
+        const $container = box.querySelector('.js-gallery-items');
+        let slides = box.querySelectorAll('.js-gallery-item');
+
+        box.dataset.index = 0;
+
+        // slides[0].addEventListener('load', function() {
+        //     console.log(this.getBoundingClientRect())
+        // })
+
+        if (slides[0].getBoundingClientRect().width > 0) {
+            $container.style.width  = slides[0].getBoundingClientRect().width + 'px'
+            $container.style.height = slides[0].getBoundingClientRect().height + 'px'
+        }
+
+        $prev.addEventListener('click', function() {
+            changeSlides.call(box, 'prev')
+        })
+        $next.addEventListener('click', function() {
+            changeSlides.call(box, 'next')
+        })
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     headerButton();
     projectsBorder();
@@ -297,6 +462,9 @@ document.addEventListener("DOMContentLoaded", () => {
     typingText();
     accordion();
     forms();
+    servicesMainSlider();
+    headerSlider();
+    imagesGallery();
 
     if (typeof ymaps !== "undefined") ymaps.ready(yandexMap);
 
@@ -317,5 +485,14 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             showPopup(el.dataset.target, el.dataset);
         });
+    });
+
+    const swiperClients = new Swiper('.swiper-clients', {
+        slidesPerView: 'auto',
+        spaceBetween: 24,
+        navigation: {
+            nextEl: '.swiper-clients-next',
+            prevEl: '.swiper-clients-prev'
+        }
     });
 });

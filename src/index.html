@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body>
     <div class="backdrop" id="header-backdrop"></div>
@@ -67,6 +68,7 @@
         <section class="content-grid section section-main">
             <div class="full-width section-main__bg-wrapper js-main-bgs-container">
                 <div class="section-main__bg is-active js-main-bg" style="background-image: url(./images/main.jpg)"></div>
+                <div class="section-main__bg is-next js-main-bg" style="background-image: url(./images/main-2.jpg)"></div>
             </div>
             <div class="orbit orbit-left">
                 <div class="planet"></div>
@@ -225,17 +227,30 @@
             <div class="section__wrapper">
                 <div class="subtitle"><svg viewBox="0 0 24 24" class="subtitle__icon"><use href="#icon-small-logo"></use></svg> Услуги</div>
                 <div class="title__border"><div class="title">Имеем богатый опыт по реализации проектов для различных сфер промышленности</div></div>
-                <div class="services border-radius">
+                <div class="services border-radius" id="services-main-slider">
                     <div class="services__image-wrapper">
                         <picture>
-                            <source srcset="./images/services-1-tablet@2x.jpg" media="(max-width: 1279px)" />
+                            <source srcset="./images/services-1-phone.jpg" media="(max-width: 767px)" />
+                            <source srcset="./images/services-1-tablet.jpg" media="(max-width: 1279px)" />
                             <source srcset="./images/services-1@2x.jpg 1.5x" />
-                            <img src="./images/services-1.jpg">
+                            <img src="./images/services-1.jpg" class="services__image">
+                        </picture>
+                        <picture>
+                            <img src="./images/africa-1-tablet.jpg" class="services__image">
+                        </picture>
+                        <picture>
+                            <img src="./images/china-1-tablet.jpg" class="services__image">
+                        </picture>
+                        <picture>
+                            <img src="./images/europe-1-tablet.jpg" class="services__image">
+                        </picture>
+                        <picture>
+                            <img src="./images/asia-1-tablet.jpg" class="services__image">
                         </picture>
                     </div>
                     <div class="services__list">
                         <div class="services__list-controls"></div>
-                        <div class="services__list-item border-radius is-active">
+                        <div class="services__list-item border-radius">
                             <div class="services__list-item-icon services__list-item-icon-1"></div>
                             Перевозки крупногабаритных и тяжеловесных грузов автомобильным, железнодорожным и водным транспортом
                         </div>
@@ -325,25 +340,36 @@
                 <div class="title__border">
                     <div class="subtitle"><svg viewBox="0 0 24 24" class="subtitle__icon"><use href="#icon-small-logo"></use></svg> Наши клиенты</div>
                     <div class="slider-buttons">
-                        <button class="slider-buttons__prev btn btn-white"><span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow"></use></svg></span></button>
-                        <button class="slider-buttons__next btn btn-white"><span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow"></use></svg></span></button>
+                        <button class="swiper-clients-prev slider-buttons__prev btn btn-white"><span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow"></use></svg></span></button>
+                        <button class="swiper-clients-next slider-buttons__next btn btn-white"><span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow"></use></svg></span></button>
                     </div>
                 </div>
-                <div class="clients">
-                    <div class="clients__item border-radius">
-                        <img src="./images/client-1.png" alt="LIEBHERR">
-                    </div>
-                    <div class="clients__item border-radius">
-                        <img src="./images/client-2.png" alt="CLAAS">
-                    </div>
-                    <div class="clients__item border-radius">
-                        <img src="./images/client-3.png" alt="WIRTGEN">
-                    </div>
-                    <div class="clients__item border-radius">
-                        <img src="./images/client-4.png" alt="РОСАТОМ">
-                    </div>
-                    <div class="clients__item border-radius">
-                        <img src="./images/client-5.png" alt="МИРАТОРГ">
+                <div class="clients swiper swiper-clients">
+                    <div class="swiper-wrapper">
+                        <div class="clients__item border-radius swiper-slide">
+                            <img src="./images/client-1.png" alt="LIEBHERR">
+                        </div>
+                        <div class="clients__item border-radius swiper-slide">
+                            <img src="./images/client-2.png" alt="CLAAS">
+                        </div>
+                        <div class="clients__item border-radius swiper-slide">
+                            <img src="./images/client-3.png" alt="WIRTGEN">
+                        </div>
+                        <div class="clients__item border-radius swiper-slide">
+                            <img src="./images/client-4.png" alt="РОСАТОМ">
+                        </div>
+                        <div class="clients__item border-radius swiper-slide">
+                            <img src="./images/client-5.png" alt="МИРАТОРГ">
+                        </div>
+                        <div class="clients__item border-radius swiper-slide">
+                            <img src="./images/client-3.png" alt="WIRTGEN">
+                        </div>
+                        <div class="clients__item border-radius swiper-slide">
+                            <img src="./images/client-4.png" alt="РОСАТОМ">
+                        </div>
+                        <div class="clients__item border-radius swiper-slide">
+                            <img src="./images/client-5.png" alt="МИРАТОРГ">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -441,16 +467,19 @@
                 <div class="tag"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-clock"></use></svg> 2023 год</div>
                 <div class="tag"><svg viewBox="0 0 24 24" class="tag__icon"><use href="#icon-list"></use></svg> Пищевая промышленность</div>
             </div>
-            <div class="images-box-slider js-images-box-slider">
+            <div class="images-box-slider js-gallery">
                 <div class="images-box-slider__controls">
-                    <button class="images-box-slider__prev btn btn-white"><span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow"></use></svg></span></button>
-                    <button class="images-box-slider__next btn btn-white"><span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow"></use></svg></span></button>
+                    <button class="images-box-slider__prev btn btn-white js-gallery-prev"><span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow"></use></svg></span></button>
+                    <button class="images-box-slider__next btn btn-white js-gallery-next"><span><svg viewBox="0 0 24 24" class="icon-svg"><use href="#icon-arrow"></use></svg></span></button>
                 </div>
-                <div class="images-box-slider__wrapper">
+                <div class="images-box-slider__wrapper js-gallery-items">
                     <picture>
                         <source srcset="./images/popup-project-1-phone.jpg" media="(max-width: 767px)" />
                         <source srcset="./images/popup-project-1@2x.jpg 1.5x" />
-                        <img src="./images/popup-project-1.jpg" loading="lazy" class="border-radius is-active">
+                        <img src="./images/popup-project-1.jpg" class="images-box-slider__item border-radius js-gallery-item is-active">
+                    </picture>
+                    <picture>
+                        <img src="./images/main-2.jpg" class="images-box-slider__item border-radius js-gallery-item">
                     </picture>
                 </div>
             </div>
@@ -505,6 +534,7 @@
         </defs>
     </svg>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="./js/main.js"></script>
 </html>
 <!-- 

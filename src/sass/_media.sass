@@ -95,6 +95,8 @@
         grid-template-columns: 100%
         grid-template-rows: auto auto
         gap: 0
+        &__image-wrapper
+            aspect-ratio: 720/500
         &__list
             padding-left: 72px
             &-controls
@@ -260,6 +262,14 @@
         &__bottom-description
             font-size: 1rem
 
+    
+    .map
+        &__marker
+            opacity: 1
+            transform: scale(1)
+    .map-scroll-wrapper
+        height: auto
+
 
 @media (max-width: 767px)
 
@@ -384,10 +394,13 @@
                 height: 80px
 
     .services
+        &__image-wrapper
+            aspect-ratio: 312/280
         &__list
             padding: 24px 16px
             flex-direction: row
-            overflow: hidden
+            overflow-x: auto
+            scroll-behavior: smooth
             &-controls
                 display: none
             &-item
