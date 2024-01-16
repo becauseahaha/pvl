@@ -81,46 +81,45 @@
                 </div>
                 <div class="text__columns border-radius section-text__direction">
                     <div>
-                        <img src="./images/asia-route.png">
+                        <lottie-player src="./js/maps/asia-murmansk.json" class="lottie" id="lottie" speed="1" loop autoplay></lottie-player>
+                        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
                     </div>
                     <div class="section-text__direction-body">
                         <div class="title__border">
                             <div class="subtitle"><svg viewBox="0 0 24 24" class="subtitle__icon"><use href="#icon-small-logo"></use></svg> Доступные пути</div>
                         </div>
                         <div class="accordion js-accordion">
-                            <div class="accordion__item is-active">
-                                <div class="accordion__header">
-                                    Сухопутные маршруты
-                                    <button type="button" class="btn btn-minus btn-blue" id="header-button">
-                                        <span>
-                                            <div class="btn__line"></div>
-                                            <div class="btn__line"></div>
-                                        </span>
-                                    </button>
-                                </div>
-                                <div class="accordion__body">
-                                    <div class="text-highlighted">Из портов Азиатского региона до порта Новороссийска</div>
-                                    <div class="text-highlighted">Через Суэцкий канал и Босфор</div>
-                                    <div class="text-highlighted">Порт Санкт-Петербурга и Калининграда без заходов в порты ЕС</div>
-                                    <div class="text-highlighted text-highlighted--white">Порт Мурманска через СевМорПуть</div>
-                                </div>
-                            </div>
                             <div class="accordion__item">
                                 <div class="accordion__header">
-                                    Морские пути
+                                    Сухопутные маршруты
                                     <button type="button" class="btn btn-plus btn-light-blue" id="header-button">
                                         <span>
                                             <div class="btn__line"></div>
                                             <div class="btn__line"></div>
                                         </span>
                                     </button>
+                                </div>
+                                <div class="accordion__body">
+                                    <div class="text-highlighted js-lottie-route" data-src="./js/maps/asia-china.json">Автомобильным транспортом через Манчжурию и Забайкальск</div>
+                                    <div class="text-highlighted js-lottie-route" data-src="./js/maps/asia-dostyk.json">Железнодорожным транспортом через Забайкальск (РФ) или Достык (Казахстан)</div>
+                                </div>
+                            </div>
+                            <div class="accordion__item is-active">
+                                <div class="accordion__header">
+                                    Морские пути
+                                    <button type="button" class="btn btn-minus btn-blue" id="header-button">
+                                        <span>
+                                            <div class="btn__line"></div>
+                                            <div class="btn__line"></div>
+                                        </span>
+                                    </button>
                                     </button>
                                 </div>
                                 <div class="accordion__body">
-                                    <div class="text-highlighted">Из портов Азиатского региона до порта Новороссийска</div>
-                                    <div class="text-highlighted">Через Суэцкий канал и Босфор</div>
-                                    <div class="text-highlighted">Порт Санкт-Петербурга и Калининграда без заходов в порты ЕС</div>
-                                    <div class="text-highlighted text-highlighted--white">Порт Мурманска через СевМорПуть</div>
+                                    <div class="text-highlighted js-lottie-route" data-src="./js/maps/asia-novorossiisk.json">Из портов Азиатского региона до порта Новороссийска</div>
+                                    <div class="text-highlighted js-lottie-route" data-src="./js/maps/asia-bosfor.json">Через Суэцкий канал и Босфор</div>
+                                    <div class="text-highlighted js-lottie-route" data-src="./js/maps/asia-spb.json">Порт Санкт-Петербурга и Калининграда без заходов в порты ЕС</div>
+                                    <div class="text-highlighted text-highlighted--white js-lottie-route" data-src="./js/maps/asia-murmansk.json">Порт Мурманска через СевМорПуть</div>
                                 </div>
                             </div>
                         </div>

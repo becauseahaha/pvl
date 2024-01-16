@@ -451,6 +451,22 @@ const imagesGallery = () => {
     });
 }
 
+const lottieRouteChange = () => {
+    const player = document.getElementById('lottie');
+    if (player) {
+        const items = document.querySelectorAll('.js-lottie-route');
+        items.forEach(el => {
+            el.addEventListener('click', () => {
+                player.load(el.dataset.src);
+                items.forEach(i => {
+                    i.classList.remove('text-highlighted--white')
+                })
+                el.classList.add('text-highlighted--white')
+            })
+        });
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     headerButton();
     projectsBorder();
@@ -461,6 +477,7 @@ document.addEventListener("DOMContentLoaded", () => {
     servicesMainSlider();
     headerSlider();
     imagesGallery();
+    lottieRouteChange();
 
     if (typeof ymaps !== "undefined") ymaps.ready(yandexMap);
 
