@@ -1,4 +1,11 @@
-@media (max-width: 1279px)
+@media (max-width: 1023px)
+
+    .map
+        &__marker
+            opacity: 1
+            transform: scale(1)
+    .map-scroll-wrapper
+        height: auto
 
     :root 
         --template-padding: 24px
@@ -124,12 +131,20 @@
 
     .advantages
         display: flex
+        gap: 0
         overflow-x: auto
 
     .advantage
         flex: 1 0 672px
+        margin-right: 24px
+        &:last-child
+            margin-right: 0
         &--empty
             display: none
+
+    .section-services
+        .advantage
+            flex-basis: 324px
 
     .clients
         overflow: hidden
@@ -153,6 +168,7 @@
             top: 16px
             transform: translate(50%, 0)
 
+    .popup--wide .popup-window,
     .popup--project .popup-window,
     .popup-window
         width: 100%
@@ -256,8 +272,8 @@
             grid-template-columns: 100%
             grid-template-rows: auto 128px auto
         &__border
-            width: 80%
-            top: 30%
+            // width: 80%
+            // top: 25%
         &__company-title,
         &__bottom-title
             font-size: 2rem
@@ -266,14 +282,6 @@
         &__company-description,
         &__bottom-description
             font-size: 1rem
-
-    
-    .map
-        &__marker
-            opacity: 1
-            transform: scale(1)
-    .map-scroll-wrapper
-        height: auto
 
 
 @media (max-width: 767px)
@@ -426,6 +434,10 @@
                 gap: 16px
                 flex: 0 0 250px
                 font-size: 0.875rem
+                margin-bottom: 0
+                margin-right: 16px
+                &:last-child
+                    margin-right: 0
             &-item,
             &-item.is-active
                 &::before,
@@ -600,7 +612,8 @@
     .about
         padding: 16px
         &__border
-            top: 45%
+            width: 100%
+            // top: 45%
         &__company-title,
         &__bottom-title
             font-size: 1.5rem

@@ -51,15 +51,29 @@ const typingText = () => {
 
 const accordion = () => {
     // if (window.innerWidth > 767) return;
-    document.querySelectorAll('.js-accordion .btn').forEach((el) => {
+    document.querySelectorAll('.js-accordion .accordion__header').forEach((el) => {
         el.addEventListener('click', function() {
-            // document.querySelectorAll('.js-contacts-card').forEach((el) => {
-            //     el.classList.remove('is-active');
-            // })
-            el.classList.toggle('btn-plus')
-            el.classList.toggle('btn-minus')
-            el.classList.toggle('btn-light-blue')
-            el.classList.toggle('btn-blue')
+
+            const self = el.closest('.accordion__item').classList.contains('is-active');
+            const $btn = el.querySelector('.btn');
+
+            document.querySelectorAll('.accordion__item').forEach((el) => {
+                // console.log(el)
+                const $btn = el.querySelector('.btn');
+                el.classList.remove('is-active');
+                $btn.classList.add('btn-plus')
+                $btn.classList.add('btn-light-blue')
+                $btn.classList.remove('btn-minus')
+                $btn.classList.remove('btn-blue')
+            })
+            
+            if (self) return;
+
+            $btn.classList.toggle('btn-plus')
+            $btn.classList.toggle('btn-minus')
+            $btn.classList.toggle('btn-light-blue')
+            $btn.classList.toggle('btn-blue')
+
             el.closest('.accordion__item').classList.toggle('is-active');
         })
     })
@@ -99,6 +113,18 @@ function showPopup(id) {
     popup.dataset.processing = true;
 
     if (popup.classList.contains("is-shown") == false) {
+
+        if (popup.dataset.file) {
+            var xhr= new XMLHttpRequest();
+            xhr.open('GET', popup.dataset.file, true);
+            xhr.onreadystatechange= function() {
+                if (this.readyState!==4) return;
+                if (this.status!==200) return;
+                popup.querySelector('.popup-window').innerHTML= this.responseText;
+            };
+            xhr.send();
+        }
+
         popup.style.display = "flex";
         setTimeout(function () {
             popup.classList.add("is-shown");
@@ -175,7 +201,7 @@ const projectsBorder = () => {
 const yandexMap = () => {
     const pin = {
         iconLayout: "default#image",
-        iconImageHref: "./../images/map-marker.png",
+        iconImageHref: "./images/map-marker.png",
         iconImageSize: [80, 80],
         iconImageOffset: [-19, -19],
     };
@@ -188,6 +214,8 @@ const yandexMap = () => {
 };
 
 const mapScroll = () => {
+
+    // if (window.innerWidth < 1280) return;
 
     const $map = document.getElementById("map-scroll");
     if ($map === null) return;
@@ -206,17 +234,17 @@ const mapScroll = () => {
         } else {
             $markers[0].classList.remove('is-active');
         }
-        if (offset > 15) {
+        if (offset > 10) {
             $markers[1].classList.add('is-active');
         } else {
             $markers[1].classList.remove('is-active');
         }
-        if (offset > 30) {
+        if (offset > 20) {
             $markers[2].classList.add('is-active');
         } else {
             $markers[2].classList.remove('is-active');
         }
-        if (offset > 45) {
+        if (offset > 30) {
             $markers[3].classList.add('is-active');
         } else {
             $markers[3].classList.remove('is-active');
@@ -297,35 +325,50 @@ const servicesMainSlider = () => {
     const $items = $box.querySelectorAll('.services__list-item');   
     const $images = $box.querySelectorAll('.services__image');   
     const $itemsContainer = $box.querySelector('.services__list');   
+    // const $progress = $box.querySelector('.services__list-controls-filled');   
 
     let i = 0, prev_i = 0, reset = false, timeoutID;
 
+    // const contStyle = getComputedStyle($itemsContainer);
+    // const containerHeight = parseFloat(contStyle.height) - parseFloat(contStyle.paddingTop) - parseFloat(contStyle.paddingBottom)
+
     // $items.forEach(element => {
-    //     element.addEventListener('click', () => {
-
-    //         clearTimeout(timeoutID)
-            // setDuration(0.3)
-
-            // const el_index = Array.from(element.parentNode.children).indexOf(element) - 1;
-            // i = el_index;
-            // prev_i = i != 0 ? i-1 : 0;
-
-
-            // $items.forEach(element => {
-            //     element.classList.remove('is-filled');
-            //     element.classList.remove('is-active');
-            // });
-
-    //         for (let index = 0; index < i; index++) {
-    //             $items[index].classList.add('is-filled');
-    //         }
-
-    //         // setDuration(duration)
-
-    //         // element.classList.add('is-active')
-    //         timeoutID = setTimeout(switcher, 100);
-    //     })
+    //     element.dataset.height = element.getBoundingClientRect().height + parseFloat(contStyle.gap)
+    //     element.dataset.heightPercentage = element.dataset.height / (containerHeight/100)
     // });
+
+    $items.forEach(element => {
+        element.addEventListener('click', () => {
+
+            clearTimeout(timeoutID)
+            setDuration(0)
+
+            const el_index = Array.from(element.parentNode.children).indexOf(element) - 1;
+            i = el_index;
+            console.log(i)
+            prev_i = i != 0 ? i-1 : 0;
+
+            $items.forEach(element => {
+                element.classList.remove('is-next');
+                element.classList.remove('is-filled');
+                element.classList.remove('is-active');
+            });
+
+            for (let index = 0; index < i; index++) {
+                $items[index].classList.add('is-filled');
+            }
+
+            $images.forEach(element => {
+                element.classList.remove('is-active');
+            });
+
+            element.classList.add('is-next')
+            $images[i].classList.add('is-active')
+            $itemsContainer.scrollTo($items[i].offsetLeft-16, 0)
+
+            timeoutID = setTimeout(switcher, duration*1000);
+        })
+    });
 
     function setDuration(s) {
         $items.forEach(element => {
@@ -339,6 +382,7 @@ const servicesMainSlider = () => {
 
             setDuration(0)
             $items.forEach(element => {
+                element.classList.remove('is-next');
                 element.classList.remove('is-filled');
                 element.classList.remove('is-active');
             });
@@ -356,6 +400,15 @@ const servicesMainSlider = () => {
             $itemsContainer.scrollTo($items[i].offsetLeft-16, 0)
             $items[i].classList.add('is-active')
             $images[i].classList.add('is-active')
+            $items[i].classList.remove('is-next')
+
+            // let setHeight = 0;
+            // for (let index = 0; index <= i; index++) {
+            //     setHeight += $items[index].dataset.heightPercentage;
+                
+            // }
+            // $progress.style.height = setHeight + '%';
+
             if (prev_i < i) {
                 $items[prev_i].classList.remove('is-active')
                 $images[prev_i].classList.remove('is-active')
@@ -380,9 +433,12 @@ const servicesMainSlider = () => {
 }
 
 const headerSlider = () => {
+
     const container = document.querySelector('.js-main-bgs-container');
     if (container == null) return;
     const slides = container.querySelectorAll('.js-main-bg');
+    if (slides.length <= 1) return;
+
     let i = 0, next_i = i+1, prev_i = slides.length-1;
 
     function changeSlides() {
@@ -451,20 +507,34 @@ const imagesGallery = () => {
     });
 }
 
-const lottieRouteChange = () => {
+const lottie = () => {
+
     const player = document.getElementById('lottie');
-    if (player) {
-        const items = document.querySelectorAll('.js-lottie-route');
-        items.forEach(el => {
-            el.addEventListener('click', () => {
-                player.load(el.dataset.src);
-                items.forEach(i => {
-                    i.classList.remove('text-highlighted--white')
-                })
-                el.classList.add('text-highlighted--white')
+    if (!player) return;
+
+    player.style.width = player.getBoundingClientRect().width + 'px';
+    player.style.height = player.getBoundingClientRect().height + 'px';
+
+    const observer = new IntersectionObserver(function (e) {
+        if (e[0].isIntersecting) {
+            player.play();
+        }
+    }, {rootMargin: "0px 0px -65% 0px"});
+
+    observer.observe(player);
+
+    const items = document.querySelectorAll('.js-lottie-route');
+    items.forEach(el => {
+        el.addEventListener('click', () => {
+            player.load(el.dataset.src);
+            player.play();
+            items.forEach(i => {
+                i.classList.remove('text-highlighted--white')
             })
-        });
-    }
+            el.classList.add('text-highlighted--white')
+        })
+    });
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -477,7 +547,7 @@ document.addEventListener("DOMContentLoaded", () => {
     servicesMainSlider();
     headerSlider();
     imagesGallery();
-    lottieRouteChange();
+    lottie();
 
     if (typeof ymaps !== "undefined") ymaps.ready(yandexMap);
 
@@ -503,6 +573,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const swiperClients = new Swiper('.swiper-clients', {
         slidesPerView: 'auto',
         spaceBetween: 14,
+        loop: true,
         navigation: {
             nextEl: '.swiper-clients-next',
             prevEl: '.swiper-clients-prev'
@@ -521,6 +592,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const swiperProjects = new Swiper('.swiper-projects', {
         slidesPerView: 'auto',
         spaceBetween: 14,
+        loop: true,
         navigation: {
             nextEl: '.swiper-projects-next',
             prevEl: '.swiper-projects-prev'
