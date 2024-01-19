@@ -512,8 +512,10 @@ const lottie = () => {
     const player = document.getElementById('lottie');
     if (!player) return;
 
-    player.style.width = player.parentElement.getBoundingClientRect().width + 'px';
-    player.style.height = player.parentElement.getBoundingClientRect().height + 'px';
+    setTimeout(() => {
+        player.style.width = player.parentElement.getBoundingClientRect().width + 'px';
+        player.style.height = player.parentElement.getBoundingClientRect().height + 'px';
+    }, 1)
 
     const observer = new IntersectionObserver(function (e) {
         if (e[0].isIntersecting) {
