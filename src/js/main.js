@@ -298,9 +298,7 @@ const forms = () => {
         if ($contact.dataset.errors > 0) return;
 
         const formData = new FormData($contact);
-        $contact.style.display = 'none';
-        document.getElementById('contact-form-success').style.display = 'block';
-        return;
+        
         fetch("/mailer.php", {
             method: "POST",
             body: formData
@@ -308,6 +306,10 @@ const forms = () => {
         .then(function(serverPromise) { 
             serverPromise.json()
             .then(function(data) { 
+                if (data.error) {
+                    alert(data.error);
+                    return;
+                }
                 $contact.style.display = 'none';
                 document.getElementById('contact-form-success').style.display = 'flex';
             });
